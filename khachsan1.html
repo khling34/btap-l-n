@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tây Bắc Tour</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cascadia+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Cascadia Mono', monospace;
+    }
+    body {
+      margin: 0;
+      color: #fff;
+    }
+
+    /* Ảnh nền mờ */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('https://cdn.pixabay.com/photo/2019/03/19/05/33/clouds-4064835_1280.jpg') no-repeat center center/cover;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5); /* overlay tối mờ */
+      z-index: -1;
+    }
+
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.859);
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+
+    .search-weather {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-box input[type="text"] {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+
+    .search-weather .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .weather {
+      background: #45b5d4;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    .flag {
+      width: 30px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    nav a i {
+      margin-right: 8px;
+    }
+
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    .footer {
+  font-family: 'Cascadia Mono', monospace;
+  background-color: #fff;
+  padding: 40px 20px;
+  color: #333;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #555;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #007bff;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.footer-newsletter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-newsletter input {
+  padding: 10px;
+  border: none;
+  background-color: #eee;
+  width: 200px;
+  border-radius: 4px 0 0 4px;
+}
+
+.footer-newsletter button {
+  padding: 10px 15px;
+  background-color: #eee;
+  border: none;
+  border-left: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer-social a {
+  margin: 0 5px;
+  color: #333;
+  font-size: 18px;
+  background-color: #f3f3f3;
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-brand {
+  font-weight: bold;
+  font-size:24px;
+  color:#2c3e50 ;
+}
+
+.footer-copy {
+  font-size: 14px;
+  color: #777;
+}
+.overlay {
+    padding: 30px 15px 80px;
+  }
+
+  .booking-box {
+    max-width: 600px;
+    margin: 30px auto;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 1s ease;
+  }
+
+  .input-group {
+    width: 48%;
+    margin: 10px 1%;
+  }
+
+  .input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .booking-box input, .booking-box select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .booking-box input:focus, 
+  .booking-box select:focus {
+    border-color: teal;
+    outline: none;
+  }
+
+  .booking-box .full-width {
+    width: 100%;
+  }
+
+  .booking-box button {
+    width: 100%;
+    background: teal;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .booking-box button:hover {
+    background: #00796b;
+  }
+
+  @keyframes slideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-buttons button {
+      margin: 5px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      background: #2ecc71;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .trip-card {
+      background: white;
+      color: black;
+      margin: 20px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      max-width: 1000px;
+      display: flex;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .trip-info {
+      padding: 20px;
+      flex: 2;
+    }
+
+    .trip-info h3 {
+      margin: 0 0 10px;
+      color: teal;
+    }
+
+    .trip-info p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+
+    .trip-img {
+      flex: 1;
+    }
+
+    .trip-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .trip-footer {
+      background: #f2f2f2;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .trip-footer span {
+      color: green;
+      font-weight: bold;
+    }
+
+    .trip-footer button {
+      background: #27ae60;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+      }
+      nav a {
+        width: 100%;
+        padding: 12px;
+      }
+    }
+
+</style>
+</head>
+<body>
+<!-- Top bar -->
+  <div class="top-bar">
+    <div class="logo">
+      <img src=""> 
+      <h1>TÂY BẮC TOUR</h1>
+    </div>
+    <div class="search-weather">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <div class="weather">
+        <i class="fas fa-cloud"></i> 16°C
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+
+  <!-- Menu -->
+  <nav>
+    <a href="#"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+
+  <!-- Đặt vé + nội dung -->
+<div class="overlay">
+  <div class="booking-box">
+    <!-- Nơi xuất phát -->
+    <div class="input-group">
+      <label for="departure">Địa điểm</label>
+      <select id="departure">
+        <option>Lào Cai</option>
+        <option>Sapa</option>
+      </select>
+    </div>
+
+    <!-- Khách sạn -->
+    <div class="input-group">
+      <label for="destination">Khách sạn </label>
+      <select id="destination">
+        <option>Hotel de la Coupole - MGallery</option>
+        <option>Pao’s Sapa Leisure Hotel</option>
+        <option>Bamboo Sapa Hotel</option>
+        <option>Sapa Highland Resort & Spa</option>
+        <option>Sapa Elegance Hotel</option>
+        <option>Chapi Homestay</option>
+        <option>Eco Palms House</option>
+        <option>Youth Homestay</option>
+        <option>Sapa Centre Hotel</option>
+        <option>Sapa Vista Hotel</option>
+        <option>BB Hotel Sapa</option>
+        <option>Khác...</option>
+      </select>
+    </div>
+
+    <!-- Ngày đặt phòng -->
+    <div class="input-group">
+      <label for="departure-date">Ngày nhận phòng</label>
+      <input type="date" id="departure-date" class="full-width" placeholder="Ngày đi">
+    </div>
+
+    <!-- Ngày trả phòng -->
+    <div class="input-group">
+      <label for="return-date">Ngày trả phòng</label>
+      <input type="date" id="return-date" class="full-width" placeholder="Ngày về">
+    </div>
+
+    <!-- Số lượng hành khách -->
+    <div class="input-group full-width">
+  <label for="passenger-count">Số lượng hành khách</label>
+  <input type="number" id="passenger-count" min="1" max="10" value="1">
+</div>
+
+    <!-- Nút tìm kiếm -->
+    <button>Tìm phòng</button>
+</div>
+</br>
+<h1 style="text-align:center;"> Gợi ý khách sạn </h3>
+</br>
+<div id="trip-list">
+  <!-- Khách sạn 1 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Silk Path Grand Resort & Spa</h3>
+    <p>Địa chỉ: Đồi Quan 6, Tổ 10, Sapa</p>
+    <p>Giá từ: 1.500.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 9.2</p>
+  </div>
+  <div class="trip-img">
+    <img src="silkpath.jpg" alt="Silk Path Grand Resort & Spa">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 2 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>KK Sapa Hotel</h3>
+    <p>Địa chỉ: 36A Mường Hoa, Sapa</p>
+    <p>Giá từ: 1.400.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.9</p>
+  </div>
+  <div class="trip-img">
+    <img src="kkhotel.jpg" alt="KK Sapa Hotel">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 3 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Pao’s Sapa Leisure Hotel</h3>
+    <p>Địa chỉ: Mường Hoa, Sapa</p>
+    <p>Giá từ: 1.500.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 9.0</p>
+  </div>
+  <div class="trip-img">
+    <img src="paos.jpg" alt="Pao’s Sapa Leisure Hotel">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 4 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Bamboo Sapa Hotel</h3>
+    <p>Địa chỉ: 18 Mường Hoa, Sapa</p>
+    <p>Giá từ: 930.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.8</p>
+  </div>
+  <div class="trip-img">
+    <img src="bamboo.jpg" alt="Bamboo Sapa Hotel">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 5 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Ville De Mont Mountain Resort</h3>
+    <p>Địa chỉ: Cách trạm cáp treo Fansipan 7.8 km</p>
+    <p>Giá từ: 2.000.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 9.1</p>
+  </div>
+  <div class="trip-img">
+    <img src="villedemont.jpg" alt="Ville De Mont Mountain Resort">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 6 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Aliana Boutique Sapa Hotel & Spa</h3>
+    <p>Địa chỉ: Gần Nhà thờ đá Sapa</p>
+    <p>Giá từ: 4.800.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 9.2</p>
+  </div>
+  <div class="trip-img">
+    <img src="aliana.jpg" alt="Aliana Boutique Sapa Hotel & Spa">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 7 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Hotel de la Coupole - MGallery</h3>
+    <p>Địa chỉ: Trung tâm Sapa</p>
+    <p>Giá từ: 2.200.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 9.3</p>
+  </div>
+  <div class="trip-img">
+    <img src="coupole.jpg" alt="Hotel de la Coupole - MGallery">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 8 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Lady Hill Sapa Resort</h3>
+    <p>Địa chỉ: Gần trạm cáp treo Fansipan</p>
+    <p>Giá từ: 1.800.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 9.1</p>
+  </div>
+  <div class="trip-img">
+    <img src="ladyhill.jpg" alt="Lady Hill Sapa Resort">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 9 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Sapa Horizon Hotel</h3>
+    <p>Địa chỉ: Gần Nhà thờ đá Sapa</p>
+    <p>Giá từ: 1.000.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 9.0</p>
+  </div>
+  <div class="trip-img">
+    <img src="ladyhill.jpg" alt="Lady Hill Sapa Resort">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 10 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Freesia Hotel</h3>
+    <p>Địa chỉ: 6A Vườn Treo, Trung tâm Sapa</p>
+    <p>Giá từ: 780.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.5</p>
+  </div>
+  <div class="trip-img">
+    <img src="freesia.jpg" alt="Freesia Hotel">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 11 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Sapa Relax Hotel & Spa</h3>
+    <p>Địa chỉ: 19A Đông Lợi, Sapa</p>
+    <p>Giá từ: 950.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.8</p>
+  </div>
+  <div class="trip-img">
+    <img src="relax.jpg" alt="Sapa Relax Hotel & Spa">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 12 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>My Boutique Hotel & Spa</h3>
+    <p>Địa chỉ: 55 Mường Hoa, Sapa</p>
+    <p>Giá từ: 1.000.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.6</p>
+  </div>
+  <div class="trip-img">
+    <img src="myboutique.jpg" alt="My Boutique Hotel & Spa">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 13 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Sapa Dragon Hotel</h3>
+    <p>Địa chỉ: 01B Thác Bạc, Sapa</p>
+    <p>Giá từ: 850.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.7</p>
+  </div>
+  <div class="trip-img">
+    <img src="dragon.jpg" alt="Sapa Dragon Hotel">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 14 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Sapa Panorama Hotel</h3>
+    <p>Địa chỉ: 10 Hoàng Diệu, Sapa</p>
+    <p>Giá từ: 700.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.3</p>
+  </div>
+  <div class="trip-img">
+    <img src="panorama.jpg" alt="Sapa Panorama Hotel">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 15 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Sapa Cat Cat Hills Resort</h3>
+    <p>Địa chỉ: Cat Cat Village, Sapa</p>
+    <p>Giá từ: 1.200.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.9</p>
+  </div>
+  <div class="trip-img">
+    <img src="catcat.jpg" alt="Sapa Cat Cat Hills Resort">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 16 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Sapa Eco-Home Mountain Retreat</h3>
+    <p>Địa chỉ: Lao Chải, Sapa</p>
+    <p>Giá từ: 1.100.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.5</p>
+  </div>
+  <div class="trip-img">
+    <img src="ecohome.jpg" alt="Sapa Eco-Home Mountain Retreat">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 17 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Phuong Nam Hotel</h3>
+    <p>Địa chỉ: Đường Fansipan, Sapa</p>
+    <p>Giá từ: 800.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.4</p>
+  </div>
+  <div class="trip-img">
+    <img src="phuongnam.jpg" alt="Phuong Nam Hotel">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 18 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Sapa Memory Hotel</h3>
+    <p>Địa chỉ: Phố Cầu Mây, Sapa</p>
+    <p>Giá từ: 600.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 8.2</p>
+  </div>
+  <div class="trip-img">
+    <img src="memory.jpg" alt="Sapa Memory Hotel">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 19 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Chapa Ecolodge</h3>
+    <p>Địa chỉ: Y Linh Hồ, Lao Chải, Sapa</p>
+    <p>Giá từ: 1.600.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 9.0</p>
+  </div>
+  <div class="trip-img">
+    <img src="chapa.jpg" alt="Chapa Ecolodge">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+<!-- Khách sạn 20 -->
+<div class="trip-card" data-location="sapa">
+  <div class="trip-info">
+    <h3>Eco Palms House</h3>
+    <p>Địa chỉ: Lao Chải, gần bản Tả Van</p>
+    <p>Giá từ: 1.700.000 ₫/đêm</p>
+    <p>Đánh giá: ⭐ 9.3</p>
+  </div>
+  <div class="trip-img">
+    <img src="ecopalms.jpg" alt="Eco Palms House">
+  </div>
+  <div class="trip-footer">
+    <button>ĐẶT PHÒNG</button>
+  </div>
+</div>
+
+
+  <script>
+    function filterTrips(type) {
+      document.querySelectorAll('.trip-card').forEach(card => {
+        card.style.display = (type === 'all' || card.dataset.type === type) ? 'flex' : 'none';
+      });
+    }
+  </script>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-newsletter">
+      <input type="email" placeholder="Nhập số điện thoại" />
+      <button>➜</button>
+    </div>
+    <div class="footer-links">
+      <a href="#">Giới thiệu</a>
+      <a href="#">Đặt tour</a>
+      <a href="#">Khách sạn</a>
+      <a href="#">Điểm đến</a>
+    </div>
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fa fa-phone"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-links">
+      <a href="#">Đối tác</a>
+      <a href="#">Hỗ trợ</a>
+      <a href="#">Thanh toán</a>
+      <a href="#">Liên hệ</a>
+    </div>
+    <div class="footer-brand">TÂY BẮC TOUR</div>
+    <div class="footer-copy">© 2025. by wanggganhh</div>
+  </div>
+</footer>
+
+</body>
+</html>

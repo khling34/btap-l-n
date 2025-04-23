@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tây Bắc Tour</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cascadia+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Cascadia Mono', monospace;
+    }
+    body {
+      margin: 0;
+      color: #fff;
+    }
+
+    /* Ảnh nền mờ */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('https://cdn.pixabay.com/photo/2019/03/19/05/33/clouds-4064835_1280.jpg') no-repeat center center/cover;
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5); /* overlay tối mờ */
+      z-index: -1;
+    }
+
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.859);
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+
+    .search-weather {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .search-box input[type="text"] {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+
+    .search-weather .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    .weather {
+      background: #45b5d4;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    .flag {
+      width: 30px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    nav a i {
+      margin-right: 8px;
+    }
+
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    .footer {
+  font-family: 'Cascadia Mono', monospace;
+  background-color: #fff;
+  padding: 40px 20px;
+  color: #333;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #555;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #007bff;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.footer-newsletter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-newsletter input {
+  padding: 10px;
+  border: none;
+  background-color: #eee;
+  width: 200px;
+  border-radius: 4px 0 0 4px;
+}
+
+.footer-newsletter button {
+  padding: 10px 15px;
+  background-color: #eee;
+  border: none;
+  border-left: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer-social a {
+  margin: 0 5px;
+  color: #333;
+  font-size: 18px;
+  background-color: #f3f3f3;
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-brand {
+  font-weight: bold;
+  font-size:24px;
+  color:#2c3e50 ;
+}
+
+.footer-copy {
+  font-size: 14px;
+  color: #777;
+}
+
+</style>
+</head>
+<body>
+<!-- Top bar -->
+  <div class="top-bar">
+    <div class="logo">
+      <img src=""> 
+      <h1>TÂY BẮC TOUR</h1>
+    </div>
+    <div class="search-weather">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <div class="weather">
+        <i class="fas fa-cloud"></i> 16°C
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+
+  <!-- Menu -->
+  <nav>
+    <a href="#"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-newsletter">
+      <input type="email" placeholder="Nhập số điện thoại" />
+      <button>➜</button>
+    </div>
+    <div class="footer-links">
+      <a href="#">Giới thiệu</a>
+      <a href="#">Đặt tour</a>
+      <a href="#">Khách sạn</a>
+      <a href="#">Điểm đến</a>
+    </div>
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fa fa-phone"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-links">
+      <a href="#">Đối tác</a>
+      <a href="#">Hỗ trợ</a>
+      <a href="#">Thanh toán</a>
+      <a href="#">Liên hệ</a>
+    </div>
+    <div class="footer-brand">TÂY BẮC TOUR</div>
+    <div class="footer-copy">© 2025. by wanggganhh</div>
+  </div>
+</footer>
+
+</body>
+</html>
+
+
