@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Du lịch Lào Cai</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Cascadia Mono;
+      color: #333;
+      scroll-behavior: smooth;
+      background-color: #f7f7f7;
+    }
+    header {
+      background: url('https://scontent.iocvnpt.com/resources/portal//Images/LCI/kimphuong/2024/z5931059377817_dc7777b6d49ded169fb505338bea5285_954195816.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align:center;
+      padding: 40px 0px; 
+      height: 400px;  
+      filter: blur(0,5 px);
+    }
+    header h1{
+      font-size: 6em;
+      color: rgb(255, 255, 255);
+      margin-top: 0.4em; 
+      margin-bottom: 0;
+    }
+    header h2{
+      font-size: 3em;
+      color: white;
+      margin-top: -5px; 
+    }
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .flag {
+      width: 30px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      -webkit-backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-weather {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px;
+      }
+    }
+     .banner .overlay {
+      background: rgba(0, 0, 0, 0.4);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .highlights {
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .locations {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .location-card {
+      display: flex;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .location-card:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+    }
+
+    .location-card img {
+      width: 120px;
+      height: 100px;
+      object-fit: cover;
+    }
+
+    .location-card div {
+      padding: 10px;
+    }
+
+    .suggestions {
+      padding: 20px;
+    }
+
+    .combo-list {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .combo-list img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .combo-list img:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+    }
+
+    .cta-button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #D4AF37;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      animation: pulse 2s infinite;
+      cursor: pointer;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); }
+      70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    }
+
+    footer {
+      background-color: #2e2e2e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .travel-inspiration {
+      padding: 40px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+.travel-inspiration h2 {
+  font-size: 28px;
+  font-family: 'Georgia', serif;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.post-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.post-list {
+  display: flex;
+  flex-wrap: nowrap; 
+  justify-content: center;
+  gap: 20px;
+  overflow-x: auto; 
+  padding: 0 20px;
+}
+
+.post-item {
+  flex: 0 0 220px;
+  text-align: left;
+}
+.carousel-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.688);
+      padding: 10px;
+      border-radius: 10px;
+      width: 100%;
+      margin: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .carousel-viewport {
+      overflow: hidden;
+      width: 100%; 
+    }
+    .carousel-track {
+      display: flex;
+      gap: 16px;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel-image {
+      width: 200px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .carousel-btn {
+      background: none;
+      border: none;
+      font-size: 48px;
+      cursor: pointer;
+      padding: 50px;
+      user-select: none;
+      color: #333;
+    }
+    .carousel-btn:hover {
+      color:#1abc9c;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="top-bar">
+    <div class="logo">
+      
+      <h1><b>TÂY BẮC TOUR</b></h1>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+  <nav>
+    <a href="#"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+  <header>
+    <h1>Lào Cai</h1>
+    <h2>Vùng đất mây phủ</h2>
+  </header>
+
+  <div class="carousel-container">
+    <button class="carousel-btn left">&#10094;</button>
+    <div class="carousel-viewport">
+      <div class="carousel-track">
+        <img src="https://i.pinimg.com/736x/30/d4/38/30d4381118c455f270cd53dd38ec675e.jpg" class="carousel-image">
+        <img src="https://i.pinimg.com/736x/20/13/0d/20130d96442b00c5bccffdb250a25c93.jpg" class="carousel-image">
+        <img src="https://i.pinimg.com/736x/6a/5e/06/6a5e0627185e97009de788a34d9f5dbb.jpg" class="carousel-image">
+        <img src="https://i.pinimg.com/736x/7d/7d/9d/7d7d9d3d43fae3902e1201d7c2e66842.jpg" class="carousel-image">
+        <img src="https://i.pinimg.com/736x/bf/d2/eb/bfd2eb2ca32581cec9f0a1eaa64ccb9d.jpg" class="carousel-image">
+        <img src="https://i.pinimg.com/736x/33/3a/8a/333a8ac1fa1371d1dc72beaa7d164502.jpg" class="carousel-image">
+        <img src="https://i.pinimg.com/736x/5c/06/76/5c06768ce03a1133a62bdd39d32221ad.jpg" class="carousel-image">
+      </div>
+    </div>
+    <button class="carousel-btn right">&#10095;</button>
+  </div>
+
+  <!-- Điểm đến nổi bật -->
+  <section class="highlights fade-in">
+    <h2>✨ Điểm đến nổi bật</h2>
+    <div class="locations">
+      <div class="location-card">
+        <img src="https://i.pinimg.com/736x/9e/e1/c9/9ee1c99551f7e034227aba6c7baf067d.jpg" alt="Cat Cat">
+        <div>
+          <h3>Bản Cát Cát</h3>
+          <p>Sapa, Lào Cai</p>
+        </div>
+      </div>
+
+      <div class="location-card">
+        <img src="https://i.pinimg.com/736x/b5/57/eb/b557ebf5f747ae90c1424641aac61076.jpg" alt="Fansipan">
+        <div>
+          <h3>Đỉnh Fansipan</h3>
+          <p>Nóc Nhà Đông Dương</p>
+        </div>
+      </div>
+    
+
+    <div class="location-card">
+        <img src="https://sapatrip.vn/wp-content/uploads/2021/07/9-6.jpg" alt="Cầu kính">
+        <div>
+          <h3>Cầu kính Rồng Mây</h3>
+          <p>Tuyệt tác kiến trúc giữa trời Sapa</p>
+        </div>
+       </div>
+
+       <div class="location-card">
+        <img src="https://owa.bestprice.vn/images/tickets/735_415/ve-tau-hoa-leo-nui-muong-hoa-sapa-671b6ae46c7e1.jpg" alt="Tàu hoả">
+        <div>
+          <h3>Tàu hoả Mường Hoa</h3>
+          <p>Xứ sở thần tiên Mường Hoa</p>
+        </div>
+      </div>
+
+      <div class="location-card">
+        <img src="https://i.pinimg.com/736x/46/4e/90/464e90cfb57fcf73db8fba2950fd959a.jpg" alt="Toà Sun plaza">
+        <div>
+          <h3>Toà nhà Sun Plaza</h3>
+          <p>Trung tâm thị trấn Sapa, tỉnh Lào Cai</p>
+        </div>
+      </div>
+      <div class="location-card">
+        <img src="https://i.pinimg.com/736x/54/77/2c/54772cd60e8f9f932648fdc48978b540.jpg" alt="Moana Sapa">
+        <div>
+          <h3>Moana Sapa</h3>
+          <p>Tiểu "Bali" giữa núi đồi mờ sương</p>
+        </div>
+      </div>
+
+        <div class="location-card">
+          <img src="https://imagevietnam.vnanet.vn/upload/2011/6/3/6-2011To0116.jpg" alt="anh">
+          <div>
+            <h3>Xã Ý Tý</h3>
+            <p>xã Y Tý, huyện Bát Xát, tỉnh Lào Cai</p>
+          </div>
+        </div>
+
+          <div class="location-card">
+            <img src="https://humtto.vn/wp-content/uploads/2024/04/bach-moc-luong-tu.jpg" alt="anh">
+            <div>
+              <h3>Bạch Mộc Lương Tử</h3>
+              <p>Bình minh trên mây</p>
+            </div>
+          </div>
+
+            <div class="location-card">
+              <img src="https://dulichviet.com.vn/images/bandidau/thung-lung-hoa-thai-giang-pho-lao-cai.jpg" alt="anh">
+              <div>
+                <h3>Thung lũng hoa Thải Giàng Phố</h3>
+                <p>xã Thải Giàng Phố, huyện Bắc Hà, tỉnh Lào Cai</p>
+              </div>
+            </div>
+
+              <div class="location-card">
+                <img src="https://dulichviet.com.vn/images/bandidau/cho-muong-hum-lao-cai.jpg" alt="anh">
+                <div>
+                  <h3>Chợ Mường Hum</h3>
+                  <p>huyện Bát Xát, tỉnh Lào Cai</p>
+                </div>
+             </div>
+    </div>             
+  </section>
+
+  <!-- Cảm hứng du lịch -->
+<section class="travel-inspiration">
+  <h2>Cảm hứng du lịch tại Sa Pa</h2>
+  <div class="post-list">
+    <div class="post-item">
+     <a href="trang 1.html" target="_blank">
+    <img src="https://i.pinimg.com/736x/e2/00/97/e20097998f9dade5797d433cf81e2eca.jpg" alt="Tả Phìn">
+  </a>
+      <h4>Khám phá bản Tả Phìn Lào Cai - Địa điểm du lịch đậm chất Tây Bắc</h4>
+      <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+    </div>
+    <div class="post-item">
+    <a href="trang 2.html" target="_blank">
+      <img src="https://ik.imagekit.io/tvlk/blog/2022/09/dac-san-sapa-4.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Đặc sản Sapa">
+      </a>
+      <h4>Top 9 đặc sản Sapa bạn nhất định phải thử</h4>
+      <p class="author">Thao Nguyen</p>
+    </div>
+    <div class="post-item">
+    <a href="trang 3.html" target="_blank">
+      <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/ruong-bac-thang-sa-pa-duoc-vinh-du-cong-nhan-danh-lam-thang-canh.jpg" alt="Ruộng bậc thang">
+      </a>
+      <h4>Khám phá Lao Chải - Bản làng xin đẹp giữa đồi núi Sapa</h4>
+      <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+    </div>
+    <div class="post-item">
+    <a href="trang 4.html" target="_blank">
+      <img src="https://ik.imagekit.io/tvlk/blog/2023/08/cong-troi-sapa-7.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Cổng trời">
+      </a>
+      <h4>Trải nghiệm du lịch Cổng trời Sapa từ A đến Z </h4>
+      <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+    </div>
+  </div> 
+</section>
+  <script>
+    const track = document.querySelector(".carousel-track");
+    const btnLeft = document.querySelector(".carousel-btn.left");
+    const btnRight = document.querySelector(".carousel-btn.right");
+    let currentIndex = 0;
+  
+    const gap = 16;
+    const imageWidth = 150;
+    const fullImageWidth = imageWidth + gap;
+  
+    const images = document.querySelectorAll(".carousel-image");
+    const minClones = 10; // số clone tối thiểu
+    for (let i = 0; i < minClones; i++) {
+      images.forEach(img => {
+        const clone = img.cloneNode(true);
+        track.appendChild(clone);
+      });
+    }
+  
+    function slideTo(index) {
+      track.style.transition = "transform 0.5s ease-in-out";
+      track.style.transform = `translateX(-${index * fullImageWidth}px)`;
+    }
+  
+    btnRight.addEventListener("click", () => {
+      currentIndex++;
+      slideTo(currentIndex);
+    });
+  
+    btnLeft.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        slideTo(currentIndex);
+      }
+    });
+    track.addEventListener("transitionend", () => {
+      const imagesOnTrack = track.querySelectorAll(".carousel-image").length;
+      if (currentIndex > imagesOnTrack - 10) {
+        images.forEach(img => {
+          const clone = img.cloneNode(true);
+          track.appendChild(clone);
+        });
+      }
+    });
+    const slider = document.getElementById("image-slider")
+
+  </script>
+</body>
+</html>
