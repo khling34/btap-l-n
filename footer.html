@@ -15,15 +15,14 @@
       color: #fff;
     }
     .footer {
-  font-family: 'Cascadia Mono', monospace;
-  background-color: #fff;
+  background-color: #333;
   padding: 40px 20px;
-  color: #333;
+  color: white;
 }
 
 .footer a {
   text-decoration: none;
-  color: #555;
+  color: white;
   margin: 0 10px;
   transition: color 0.3s ease;
 }
@@ -76,12 +75,25 @@
 .footer-social a {
   margin: 0 5px;
   color: #333;
-  font-size: 18px;
+  font-size: 28px;
   background-color: #f3f3f3;
-  padding: 8px;
+  padding: 10px;
   border-radius: 50%;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
 }
+
+.footer-social a:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
 
 .footer-bottom {
   display: flex;
@@ -143,7 +155,3 @@
 </footer>
 </body>
 </html>
-
-
-
-
