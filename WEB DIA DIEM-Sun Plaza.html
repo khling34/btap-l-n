@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Toa Nha Sun Plaza</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Cascadia Mono;
+      background: url('https://image.bnews.vn/MediaUpload/Org/2021/02/02/du-li-ch-sa-pa-nga-y-ca-ng-ha-p-da-n-nho-nhu-ng-co-ng-tri-nh-sa-n-pha-m-da-ng-ca-p-.jpg') no-repeat center center fixed;
+  background-size: cover;
+    }
+  
+    header h1{
+      font-size: 6em;
+      color:  rgba(0, 0, 0, 0.9);
+      margin-bottom: auto;
+      margin-left: 30px;
+    }
+    header h2{
+      font-size: 3em;
+      color:  rgba(0, 0, 0, 0.9);
+      margin-left: 30px;
+    }
+    .white-box {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .flag {
+      width: 30px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      -webkit-backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-weather {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px;
+      }
+    } 
+    .intro-section {
+        background-color: rgba(255, 255, 255, 0.688);
+        padding: 50px;
+        font-family: Cascadia Mono
+    }
+    .intro-content {
+        display: flex;
+        align-items: center;
+        font-weight:lighter;
+        gap: 60px;
+    }
+    .intro-image img {
+        width: 170px;
+        height: 170px;
+        border: 0.5px solid #335599;
+        border-radius: 50%;
+        padding: 10px;
+        background-color: white;
+    }
+    .intro-text p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #000;
+        font-weight: 300;
+    }
+    .content-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: black;
+        display: inline-block;
+        margin: 10px;
+        padding: 40px;
+    }
+    .content-image{
+      width: 200px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+    .full-image-section {
+      width: 100%;
+      padding: 40px 0;
+      background-color:rgba(255, 255, 255, 0.688) ;
+      display: flex;
+      justify-content: center;
+    }
+
+    .full-width-image {
+      width: 90%;
+      max-width: 1000px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .travel-inspiration {
+      padding: 40px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .travel-inspiration h2 {
+      font-size: 28px;
+      font-family: 'Georgia', serif;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .post-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .post-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .post-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .post-list {
+      display: flex;
+      flex-wrap: nowrap; 
+      justify-content: center;
+      gap: 20px;
+      overflow-x: auto; 
+      padding: 0 20px;
+    }
+
+    .post-item {
+      flex: 0 0 220px;
+      text-align: left;
+    }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="top-bar">
+    <div class="logo">
+      
+    <h1><b>TÂY BẮC TOUR</b></h1>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+  <nav>
+    <a href="#"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+  <header>
+    <h1>Tòa Nhà Sun Plaza</h1>
+    <h2>Trung tâm thị trấn Sapa, tỉnh Lào Cai</h2>
+  </header>
+  <div class="white-box">
+  <section class="intro-section">
+    <h2 class="section-title">Giới Thiệu Chung</h2>
+    <div class="intro-content">
+      <div class="intro-image">
+        <img src="https://www.ahalong.com/uploads/ATHAO/sapa/sun-plaza-sapa-17.jpg" alt="Logo Lào Cai">
+      </div>
+      <div class="intro-text">
+        <p>Thời gian qua Sun Plaza là điểm đến hót hòn họt với các bạn trẻ. Tòa nhà này nằm ở ngay khu vực trung tâm thị trấn Sapa. Không chỉ thế, Sun Plaza còn được thiết kế theo khung hướng châu Âu vô cùng hiện đại.</p>
+        <p><b>Vị trí:</b> Tòa nhà Sun Plaza Sa Pa nằm tại ngã tư trung tâm thị xã Sa Pa, ngay đối diện Quảng trường Sa Pa, là điểm giao nhau giữa đường Phan Xi Păng và phố Hoàng Liên. Từ Nhà thờ đá Sa Pa phóng tầm mắt nhìn chếch sang bên kia đường, bạn sẽ thấy một tòa nhà lớn, xây dựng theo phong cách kiến trúc Châu Âu cổ điển, nổi bật với tháp đồng hồ lớn, đó chính là Sun Plaza.
+
+. </p>
+      </div>
+      </div>
+      <h2 class="section-title">Một Vài Nét</h2>
+        <div class="intro-text">
+            <p>Sun Plaza Sa Pa là tòa nhà 4 tầng, gồm trung tâm thương mại, nhà hàng, phòng bán vé tàu hỏa leo núi Mường Hoa và bãi đỗ xe. Trong đó, tầng trệt là bãi đỗ xe, một phần tầng 1 – từ lối Tháp đồng hồ đi vào là trung tâm thương mại và phòng bán vé tàu hỏa leo núi Mường Hoa, tầng 2 là trung tâm thương mại và nhà hàng, tầng 3 là nhà hàng và quán bar..</p></div> </section>
+        <div class="full-image-section">
+            <img src="https://img.tripi.vn/cdn-cgi/image/width=700,height=700/https://gcs.tripi.vn/public-tripi/tripi-feed/img/473612Wzi/fmobtqvztkotvmqhskez.webp">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Khám Phá Tòa Nhà</h2>
+          <div class="intro-text">
+            <p>Kiến trúc chủ đạo của Sun Plaza Sa Pa thể hiện chính xác sự xa hoa, hào nhoáng của phong cách kiến trúc Pháp cổ điển. Ngay từ bên ngoài, tòa nhà đã thu hút ánh nhìn của du khách bởi sự lộng lẫy, như mang cả trời Âu về phố núi Sa Pa.</p>
+            <p>Màu vàng tượng trưng cho ruộng bậc thang và màu xanh tượng trưng cho đồi núi được sử dụng chủ đạo trong thiết kế và trang trí nội thất bên trong tòa nhà. Nhờ vậy, du khách vừa choáng ngợp nhưng cũng cảm nhận được sự gần gũi, thân thuộc khi ngắm nhìn và bước vào Sa Pa Sun Plaza.
+            </p></div></section>
+          <div class="full-image-section">
+            <img src="https://mia.vn/media/uploads/blog-du-lich/kien-truc-sun-plaza-1703320883.jpg">
+        </div>
+
+
+    
+          <h2 class="section-title">Một vài kinh nghiệm</h2>
+          <div class="intro-text">
+            <p>Hãy để Sun Plaza làm cho kỳ nghỉ của bạn trở nên hoàn hảo và đặc biệt hơn bao giờ hết. Với kiến trúc mang hơi hướng cổ điển cùng các dịch vụ tiện ích bên trong khu trung tâm thương mại Sun Plaza, nơi đây chắc chắn sẽ là điểm đến không thể quên trong lòng mỗi người khi bước chân tới Sapa. Nếu bạn có cơ hội du lịch tại Sapa, đừng quên ghé thăm địa điểm tuyệt vời này nhé!</p>
+            <p>- <b>Quần áo:</b> Chuẩn bị một số bộ quần áo phù hợp để thay đổi phong cách thời trang khi vui chơi và chụp ảnh tại đây.</p>
+            <p>- <b>Thời tiết:</b>Do thời tiết ở Sapa thường se se lạnh, nên hãy chuẩn bị thêm áo khoác phù hợp</p>
+          </div>
+        </section>
+        <div class="full-image-section">
+          <img src="https://digiticket.vn/blog/wp-content/uploads/2022/08/sun-plaza-sapa-1.jpeg" alt="anh" class="full-width-image">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Chi Phí</h2>
+          <div class="intro-text">
+            <h3 style="color:goldenrod">Giá vé </h3>
+            <p><b>Giá vé vào:</b> 50.000đ/người</p>
+            <p><b>Giá vé gửi xe:</b> 10.000đ/xe</p>
+            <p>Ngoài ra, chúng ta có thể thuê những bộ trang phục quần áo của người bản địa để chụp những bức hình làm kỉ niệm</p>
+            <img src="https://eholiday.vn/wp-content/uploads/2021/06/sun-plaza-nga-tu-paris-hoa-le-tai-pho-nui-sapa-7.jpg">
+            <h3 style="color:goldenrod">Giá vé thuê quần áo</h3>
+            <p><b>Giá thuê ngày:</b> 800.000đ/ngày</p>
+            <p><b>Giá thuê theo giờ:</b> 50.000đ/giờ</p>
+          </div>
+        </section>
+        </div>
+        <section class="travel-inspiration">
+          <h2>Cảm hứng du lịch tại Sa Pa</h2>
+          <div class="post-list">
+            <div class="post-item">
+             <a href="trang 1.html" target="_blank">
+            <img src="https://i.pinimg.com/736x/e2/00/97/e20097998f9dade5797d433cf81e2eca.jpg" alt="Tả Phìn">
+          </a>
+              <h4>Khám phá bản Tả Phìn Lào Cai - Địa điểm du lịch đậm chất Tây Bắc</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 2.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2022/09/dac-san-sapa-4.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Đặc sản Sapa">
+              </a>
+              <h4>Top 9 đặc sản Sapa bạn nhất định phải thử</h4>
+              <p class="author">Thao Nguyen</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 3.html" target="_blank">
+              <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/ruong-bac-thang-sa-pa-duoc-vinh-du-cong-nhan-danh-lam-thang-canh.jpg" alt="Ruộng bậc thang">
+              </a>
+              <h4>Khám phá Lao Chải - Bản làng xin đẹp giữa đồi núi Sapa</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 4.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2023/08/cong-troi-sapa-7.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Cổng trời">
+              </a>
+              <h4>Trải nghiệm du lịch Cổng trời Sapa từ A đến Z </h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+          </div>
+        </section>
+</body>
+</html>
