@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Ban Cat Cat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Cascadia Mono;
+      background: url('https://r2.nucuoimekong.com/wp-content/uploads/ban-cat-cat-chi-duong-c.jpg') no-repeat center center fixed;
+  background-size: cover;
+    }
+  
+    header h1{
+      font-size: 6em;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: auto;
+      margin-left: 30px;
+    }
+    header h2{
+      font-size: 3em;
+      color: rgba(255, 255, 255, 0.711);
+      margin-left: 30px;
+    }
+    .white-box {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .flag {
+      width: 30px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      -webkit-backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-weather {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px;
+      }
+    } 
+    .intro-section {
+        background-color: rgba(255, 255, 255, 0.688);
+        padding: 50px;
+        font-family: Cascadia Mono
+    }
+    .intro-content {
+        display: flex;
+        align-items: center;
+        font-weight:lighter;
+        gap: 60px;
+    }
+    .intro-image img {
+        width: 170px;
+        height: 170px;
+        border: 0.5px solid #335599;
+        border-radius: 50%;
+        padding: 10px;
+        background-color: white;
+    }
+    .intro-text p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #000;
+        font-weight: 300;
+    }
+    .content-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: black;
+        display: inline-block;
+        margin: 10px;
+        padding: 40px;
+    }
+    .content-image{
+      width: 200px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+    .full-image-section {
+      width: 100%;
+      padding: 40px 0;
+      background-color:rgba(255, 255, 255, 0.688) ;
+      display: flex;
+      justify-content: center;
+    }
+
+    .full-width-image {
+      width: 90%;
+      max-width: 1000px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .travel-inspiration {
+      padding: 40px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .travel-inspiration h2 {
+      font-size: 28px;
+      font-family: 'Georgia', serif;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .post-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .post-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .post-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .post-list {
+      display: flex;
+      flex-wrap: nowrap; 
+      justify-content: center;
+      gap: 20px;
+      overflow-x: auto; 
+      padding: 0 20px;
+    }
+
+    .post-item {
+      flex: 0 0 220px;
+      text-align: left;
+    }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="top-bar">
+    <div class="logo">
+      
+    <h1><b>TÂY BẮC TOUR</b></h1>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+  <nav>
+    <a href="#"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+  <header>
+    <h1>Bản Cát Cát</h1>
+    <h2>Sapa - Lào Cai</h2>
+  </header>
+  <div class="white-box">
+  <section class="intro-section">
+    <h2 class="section-title">Giới Thiệu Chung</h2>
+    <div class="intro-content">
+      <div class="intro-image">
+        <img src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2018/08/ban-cat-cat14.jpg" alt="Logo Lào Cai">
+      </div>
+      <div class="intro-text">
+        <p>Bản Cát Cát từ lâu đã thu hút hội cuồng du lịch vì dù chỉ là một bản làng nhỏ nhưng nơi đây được bao phủ bởi sắc xanh của núi rừng, của ruộng bậc thang hòa lẫn với nét mộc mạc, đơn sơ của những căn nhà nhỏ được dựng nên từ gỗ. 
+          Qua đó, đem đến cho du khách ghé thăm một cảm giác bình dị trái ngược với sự xô bồ nơi phố thị.</p>
+        <p><b>Vị trí:</b> Bản Cát Cát là một bản nhỏ nằm trong thung lũng Mường Hoa thuộc địa phận tỉnh Lào Cai; cách trung tâm thị trấn Sapa khoảng hơn 2km. </p>
+      </div>
+      </div>
+      <h2 class="section-title">Một Vài Nét</h2>
+        <div class="intro-text">
+            <p>Thiên đường mây Sapa – niềm tự hào của vùng núi rừng Tây Bắc đã không còn xa lạ gì với du khách trong và ngoài nước. Giữa khung cảnh thiên nhiên núi rừng hoang sơ hùng vĩ đó, có một bản làng mộc mạc nhỏ xinh khiến bất kỳ ai đến với Sapa cũng nhất định phải ghé đến.
+               Đó chính là bản Cát Cát đầy cuốn hút với những nếp nhà gỗ đơn sơ, những con suối nhỏ chảy róc rách, những tấm thổ cẩm rực rỡ sắc màu và những những người dân tộc nhỏ bé giản đơn.</p></div> </section>
+        <div class="full-image-section">
+            <img src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2016/01/cong-troi-sapa-vntrip2.jpg" alt="thoi tiet" class="full-width-image">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Khám Phá Bản Cát Cát</h2>
+          <div class="intro-text">
+            <p>Trên hành trình khám phá bản Cát Cát, có 2 con đường chắc chắn sẽ để lại cho bạn nhiều ấn tượng nhất. Là con đường đi đến bản Cát Cát và đoạn đường bậc thang từ cổng của bản Cát Cát dẫn lối vào bên trong bản..</p>
+            <p>Khu du lịch bản Cát Cát có rất nhiều những điều thú vị và hấp dẫn để cho bạn khám phá. Từ những con đường nhỏ, những ngôi nhà bé xíu, làng nghề thủ công, thác suối, Gem valley bản Cát Cát,..
+            </p></div></section>
+          <div class="full-image-section">
+            <img src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2018/08/ban-cat-cat13-768x959.jpg" alt="lang nghe" class="full-width-image">
+        </div>
+
+
+    
+          <h2 class="section-title">Một vài kinh nghiệm</h2>
+          <div class="intro-text">
+            <p>Trên đường trờ về, từ điểm dừng chân cuối cùng của bản Cát Cát đến thị trấn là hơn 3km. Sau quá trình khám phá ngôi làng với quãng đường khá dài thì đoạn đường 3km để trở về đó sẽ khiến bạn khá mệt vì thế bạn nếu sức khỏe không tốt bạn nên đi xe máy và gửi xe ở cổng bản (không được đi xe ở trong bản).</p>
+            <p>- <b>Thuốc:</b> Bạn nên mang theo thuốc cảm, thuốc xịt côn trùng.</p>
+            <p>- <b>Tiền mặt:</b> Bạn nên giữ một lượng tiền mặt vừa phải để chi tiêu cho các khoản phát sinh như ăn uống và giải trí trong suốt thời gian ở Bản Cát Bà</p>
+          </div>
+        </section>
+        <div class="full-image-section">
+          <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/1-ban-cat-cat.png" alt="anh" class="full-width-image">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Chi Phí</h2>
+          <div class="intro-text">
+            <h3 style="color:goldenrod">Giá vé vào Bản Cát</h3>
+            <p><b>Giá vé vào:</b> 50.000đ/người</p>
+            <p><b>Giá vé gửi xe:</b> 10.000đ/xe</p>
+            <p>Ngoài ra, chúng ta có thể thuê những bộ trang phục quần áo của người bản địa để chụp những bức hình làm kỉ niệm</p>
+            <img src="https://cdn.vntrip.vn/cam-nang/wp-content/uploads/2018/08/ban-cat-cat17-768x768.jpg" alt="lang nghe" class="full-width-image">
+            <h3 style="color:goldenrod">Giá vé thuê quần áo</h3>
+            <p><b>Giá thuê ngày:</b> 800.000đ/ngày</p>
+            <p><b>Giá thuê theo giờ:</b> 50.000đ/giờ</p>
+          </div>
+        </section>
+        </div>
+        <section class="travel-inspiration">
+          <h2>Cảm hứng du lịch tại Sa Pa</h2>
+          <div class="post-list">
+            <div class="post-item">
+             <a href="trang 1.html" target="_blank">
+            <img src="https://i.pinimg.com/736x/e2/00/97/e20097998f9dade5797d433cf81e2eca.jpg" alt="Tả Phìn">
+          </a>
+              <h4>Khám phá bản Tả Phìn Lào Cai - Địa điểm du lịch đậm chất Tây Bắc</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 2.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2022/09/dac-san-sapa-4.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Đặc sản Sapa">
+              </a>
+              <h4>Top 9 đặc sản Sapa bạn nhất định phải thử</h4>
+              <p class="author">Thao Nguyen</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 3.html" target="_blank">
+              <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/ruong-bac-thang-sa-pa-duoc-vinh-du-cong-nhan-danh-lam-thang-canh.jpg" alt="Ruộng bậc thang">
+              </a>
+              <h4>Khám phá Lao Chải - Bản làng xin đẹp giữa đồi núi Sapa</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 4.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2023/08/cong-troi-sapa-7.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Cổng trời">
+              </a>
+              <h4>Trải nghiệm du lịch Cổng trời Sapa từ A đến Z </h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+          </div>
+        </section>
+</body>
+</html>
