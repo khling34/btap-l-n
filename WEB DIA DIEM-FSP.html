@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tây Bắc Tour - Fansipan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Cascadia Mono;
+      background: url('https://scontent.iocvnpt.com/resources/portal//Images/LCI/kimphuong/2024/z5930801183628_b02ada11ba37e95dc4b4f4adbab36c82_795113482.jpg') no-repeat center center fixed;
+  background-size: cover;
+  opacity:0,8;
+    }
+  
+    header h1{
+      font-size: 6em;
+      color:  rgba(0, 0, 0, 0.9);
+      margin-bottom: auto;
+      margin-left: 30px;
+    }
+    header h2{
+      font-size: 3em;
+      color:  rgba(0, 0, 0, 0.9);
+      margin-left: 30px;
+    }
+    .white-box {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .flag {
+      width: 30px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      -webkit-backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-weather {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px;
+      }
+    } 
+    .intro-section {
+        background-color: rgba(255, 255, 255, 0.688);
+        padding: 50px;
+        font-family: Cascadia Mono
+    }
+    .intro-content {
+        display: flex;
+        align-items: center;
+        font-weight:lighter;
+        gap: 60px;
+    }
+    .intro-image img {
+        width: 170px;
+        height: 170px;
+        border: 0.5px solid #335599;
+        border-radius: 50%;
+        padding: 10px;
+        background-color: white;
+    }
+    .intro-text p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #000;
+        font-weight: 300;
+    }
+    .content-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: black;
+        display: inline-block;
+        margin: 10px;
+        padding: 40px;
+    }
+    .content-image{
+      width: 200px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+    .full-image-section {
+      width: 100%;
+      padding: 40px 0;
+      background-color:rgba(255, 255, 255, 0.688) ;
+      display: flex;
+      justify-content: center;
+    }
+
+    .full-width-image {
+      width: 90%;
+      max-width: 1000px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .travel-inspiration {
+      padding: 40px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .travel-inspiration h2 {
+      font-size: 28px;
+      font-family: 'Georgia', serif;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .post-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .post-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .post-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .post-list {
+      display: flex;
+      flex-wrap: nowrap; 
+      justify-content: center;
+      gap: 20px;
+      overflow-x: auto; 
+      padding: 0 20px;
+    }
+
+    .post-item {
+      flex: 0 0 220px;
+      text-align: left;
+    }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="top-bar">
+    <div class="logo">
+      
+    <h1><b>TÂY BẮC TOUR</b></h1>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+  <nav>
+    <a href="#"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+  <header>
+    <h1>Đỉnh Fansipan</h1>
+    <h2>Nóc Nhà Đông Dương</h2>
+  </header>
+  <div class="white-box">
+  <section class="intro-section">
+    <h2 class="section-title">Giới Thiệu Chung</h2>
+    <div class="intro-content">
+      <div class="intro-image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Fansipan_summit_2_in_sunrise.jpg/1280px-Fansipan_summit_2_in_sunrise.jpg" alt="Logo Lào Cai">
+      </div>
+      <div class="intro-text">
+        <p> Lào Cai là một tỉnh vùng núi thuộc vùng Tây Bắc Bộ, Việt Nam. Đa phần diện tích là đồi núi và có dãy Hoàng Liên Sơn chạy qua.
+            Trong dãy Hoàng Liên Sơn ở Lào Cai có đỉnh Fansipan, cao 3143m - Được mệnh danh là nóc nhà Đông Dương. </p>
+        <p><b>Vị trí:</b> Nằm cách trung tâm Thị xã Sa Pa 9km về phía tây nam</p>
+      </div>
+      </div>
+      <h2 class="section-title">Lịch Sử Hình Thành</h2>
+        <div class="intro-text">
+            <p>Quá trình kiến tạo địa chất Fansipan đã diễn ra từ khoảng 250 – 260 triệu năm về trước trong thời kỳ chuyển tiếp giữa kỷ 
+            Permi của Đại Cổ sinh và kỷ Tam Điệp của Đại Trung sinh. Các nghiên cứu chỉ ra rằng đỉnh Himalaya đã nâng cao địa hình đỉnh 
+            Fansipan và dãy Hoàng Liên Sơn, tạo ra một vết đứt gãy kéo dài về phía Đông hình thành nên sông Hồng. Đến nay, quá trình này 
+            vẫn đang tiếp tục diễn ra thầm lặng dưới tác động của nhiều yếu tố khác nhau.</p></div> </section>
+        <div class="full-image-section">
+            <img src="https://sinhtour.vn/wp-content/uploads/2022/12/phan-xi-pang.jpg" alt="Toàn cảnh đỉnh Fansipan" class="full-width-image">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Khám Phá Fansipan</h2>
+          <div class="intro-text">
+            <p>Đỉnh Fansipan không chỉ là nơi thu hút du khách bởi độ cao mà còn bởi khung cảnh hùng vĩ của núi rừng Tây Bắc. Từ đỉnh núi, bạn có thể ngắm toàn cảnh mây trời hòa quyện cùng những thửa ruộng bậc thang phía xa.</p>
+            <p>Để lên đến đỉnh, du khách có thể lựa chọn leo bộ hoặc đi cáp treo — một trải nghiệm đầy thú vị với khung cảnh ngoạn mục suốt hành trình.
+              Đến độ cao 2.400m bạn có cảm giác như gió mây quện hòa với cây rừng, xòe bàn tay ra tưởng như có thể năm được mây. Từ độ cao 2.800m, mây mù 
+              bỗng tan biến, bầu trời quang đãng, trong xanh. Chỉ có gió thổi làm cho thảm thực vật phải dán mình vào đá.
+            </p></div></section>
+          <div class="full-image-section">
+            <img src="https://mytourcdn.com/upload_images/Sapa-th%C3%A1ng-10.jpg" alt="Fansipan buổi sáng" class="full-width-image">
+          </div>
+        <section class="intro-section">
+          <h2 class="section-title">Lưu Ý Khi Chinh Phục Fansipan</h2>
+          <div class="intro-text">
+            <p>Fansipan có độ cao lên đến 3143m so với mực nước biển, Do đó, khi đi Fansipan, du khách nên chuẩn bị các vật dụng giữ ấm như: Áo khoác dày, áo mưa, găng tay, ủng… Ngoài ra, khi di chuyển bằng cáp treo trên đỉnh Fansipan, bạn cần lưu ý một số điều sau để có được chuyến hành trình tuyệt vời nhất:</p>
+            <p>- <b>Trang phục phù hợp:</b> Dù bạn lựa chọn leo núi hay đi cáp treo, hãy trang bị cho mình đôi giày thể thao nhẹ và hỗ trợ tốt để thuận lợi trong quá trình. Ngoài ra, bạn nên mặc trang phục ấm và gọn nhẹ, đừng quên mang theo găng tay, khăn quàng và mũ ấm để giữ ấm cho cơ thể</p>
+            <p>- <b>Thuốc:</b> Bạn nên mang theo thuốc giảm đau đầu, nếu từng có tiền sử say tàu, xe,.. thì bạn cũng nên chuẩn bị sẵn thuốc chống say trước khi lên cáp treo nhé.</p>
+            <p>- <b>Tiền mặt:</b> Bạn nên giữ một lượng tiền mặt vừa phải để chi tiêu cho các khoản phát sinh như ăn uống và giải trí trong suốt thời gian ở Fansipan.</p>
+          </div>
+        </section>
+        <div class="full-image-section">
+          <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2020/04/cap-treo-fansipan-legend_result.png" alt="Fansipan buổi sáng" class="full-width-image">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Chi Phí Chinh Phục Nóc Nhà Đông Dương</h2>
+          <div class="intro-text">
+            <h3 style="color:goldenrod">Giá vé cáp treo</h3>
+            <p><b>Người lớn:</b> 800.000đ/người</p>
+            <p><b>Trẻ em:</b> 550.000đ/người</p>
+            <h3 style="color:goldenrod">Giá vé tàu hỏa lên đỉnh Fansipan</h3>
+            <p><b>Chiều lên:</b> 150.000đ/người</p>
+            <p><b>Chiều xuống:</b> 120.000đ/người</p>
+          </div>
+        </section>
+        </div>
+        <section class="travel-inspiration">
+          <h2>Cảm hứng du lịch tại Sa Pa</h2>
+          <div class="post-list">
+            <div class="post-item">
+             <a href="trang 1.html" target="_blank">
+            <img src="https://i.pinimg.com/736x/e2/00/97/e20097998f9dade5797d433cf81e2eca.jpg" alt="Tả Phìn">
+          </a>
+              <h4>Khám phá bản Tả Phìn Lào Cai - Địa điểm du lịch đậm chất Tây Bắc</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 2.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2022/09/dac-san-sapa-4.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Đặc sản Sapa">
+              </a>
+              <h4>Top 9 đặc sản Sapa bạn nhất định phải thử</h4>
+              <p class="author">Thao Nguyen</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 3.html" target="_blank">
+              <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/ruong-bac-thang-sa-pa-duoc-vinh-du-cong-nhan-danh-lam-thang-canh.jpg" alt="Ruộng bậc thang">
+              </a>
+              <h4>Khám phá Lao Chải - Bản làng xin đẹp giữa đồi núi Sapa</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 4.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2023/08/cong-troi-sapa-7.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Cổng trời">
+              </a>
+              <h4>Trải nghiệm du lịch Cổng trời Sapa từ A đến Z </h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+          </div>
+        </section>
+</body>
+</html>
