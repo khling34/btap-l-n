@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hang Tiên - hẻm Tu Sản của Lào Cai</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Cascadia Mono;
+      background: url('https://i1-dulich.vnecdn.net/2021/08/21/A-nh-1-logo-1629529801.png?w=1200&h=0&q=100&dpr=2&fit=crop&s=e3TxLbs8W50QgYoNn2Z5PA') no-repeat center center fixed;
+      background-size: cover;
+      opacity:0,8;
+    }
+    .white-box {
+        max-width: 1200px;
+        margin: 40px auto;
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .flag {
+      width: 30px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      -webkit-backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-weather {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px;
+      }
+    } 
+    .intro-section {
+        background-color: rgba(255, 255, 255, 0.688);
+        padding: 50px;
+        font-family: Cascadia Mono;
+        align-items: center;
+    }
+    .intro-content {
+        display: flex;
+        align-items: center;
+        font-weight:lighter;
+        gap: 60px;
+    }
+    .intro-text p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #000;
+        font-weight: 300;
+    }
+    .content-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: black;
+        display: inline-block;
+        margin: 10px;
+        padding: 40px;
+    }
+    .content-image{
+      width: 200px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 60px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2c3e50;
+      text-align: center;
+      margin-top: 0;
+    }
+    .full-image-section {
+      width: 100%;
+      padding: 40px 0;
+      background-color:rgba(255, 255, 255, 0.688) ;
+      display: flex;
+      justify-content: center;
+    }
+
+    .full-width-image {
+      width: 90%;
+      max-width: 1000px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .travel-inspiration {
+      padding: 40px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .travel-inspiration h2 {
+      font-size: 28px;
+      font-family: 'Georgia', serif;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .post-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .post-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .post-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .post-list {
+      display: flex;
+      flex-wrap: nowrap; 
+      justify-content: center;
+      gap: 20px;
+      overflow-x: auto; 
+      padding: 0 20px;
+    }
+
+    .post-item {
+      flex: 0 0 220px;
+      text-align: left;
+    }
+
+    h4{
+        text-align: center;
+        font-size: 20px;
+        margin-top:0;
+        font-weight:bolder;
+        font-style: italic;
+    }
+    h3{
+        text-align: right;
+        font-size:20px;
+        margin-top: 5px;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="top-bar">
+    <div class="logo">
+      
+    <h1><b>TÂY BẮC TOUR</b></h1>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+  <nav>
+    <a href="TCindex.html"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+  
+  <div class="white-box">
+  <section class="intro-section">
+    <h2 class="section-title">Hang Tiên - hẻm Tu Sản của Lào Cai</h2> 
+    <div class="intro-content">
+      <div class="intro-text">
+        <p>Bãi cát trắng, nước trong xanh, khung cảnh quanh Hang Tiên ở Lào Cai được ví như hẻm Tu Sản của Hà Giang, là địa điểm nghỉ ngơi lý tưởng giữa rừng núi vào ngày hè. </p>
+        <p>Đường dẫn vào Hang Tiên ở xã Cốc Ly, huyền Bắc Hà, Lào Cai, là dòng chảy thu nhỏ của sông Chảy, bắt nguồn từ các nhánh suối ở phía Tây Bắc tỉnh Hà Giang. Sông Chảy chảy qua địa bàn các tỉnh Lào Cai, Yên Bái rồi hợp lưu với sông Lô ở Phú Thọ.</p>
+        <p>Theo Trung tâm Thông tin và Xúc tiến Du lịch tỉnh Lào Cai, Hang Tiên là hang tự nhiên, hiện chưa được đưa vào khai thác du lịch. Trước đây, hang chủ yếu được du khách ngoại quốc biết đến qua tuyến du lịch Bảo Nhai - chợ Cốc Ly, hoạt động từ hơn 10 năm trước. Đến đầu năm 2023, Hang Tiên dần được chú ý và thu hút nhiều khách nội địa hơn.</p>
+        <p>Hang Tiên sở hữu khung cảnh tựa như phiên bản thu nhỏ của hẻm Tu Sản ở Hà Giang, có bãi cắm trại, suối để du khách trải nghiệm các hoạt động dưới nước</p>
+      </div>
+    </div> 
+    <div class="full-image-section">
+        <img src="https://i1-dulich.vnecdn.net/2023/05/16/anh-1-4682-1684236858.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=aQDdTmwO4Sjfryx770Evzg" alt="Hang" class="full-width-image">
+    </div>
+    <h4>Khung cảnh tại Hang Tiên tựa như phiên bản thu nhỏ của sông Nho Quế và hẻm Tu Sản ở Hà Giang.</h4>
+        <div class="intro-text">
+            <p>Anh Dũng Nguyễn, tour guide bản địa thường xuyên dẫn khách đến trải nghiệm Hang Tiên, cho biết để đến địa điểm này, du khách di chuyển đến xã Bảo Nhai rồi đi thuyền ngược dòng sông Chảy trong gần một tiếng. Trong hành trình tới hang, du khách đi qua đền Trung Đô hơn 300 năm tuổi, một di tích lịch sử quốc gia. Đền là nơi thờ tướng công Gia Quốc Công Vũ Văn Mật cùng với các thuộc tướng, những người có công bảo vệ biên cương và phát triển vùng đất Trung Đô.</p>
+            <p>Địa điểm hạ trại là bãi đất trống, bằng phẳng nằm cạnh suối, cách cửa Hang Tiên khoảng 100 m. Dòng suối nằm giữa hai bên vách đá dựng đứng, nước nông, trong và xanh màu ngọc bích. "Khung cảnh khiến tôi liên tưởng đến hẻm Tu Sản ở Hà Giang", anh Dũng nói. Khu vực này hoàn toàn tách biệt với thế giới bên ngoài, không còn tiếng còi xe, chỉ có âm thanh của rừng núi: tiếng chim hót, tiếng côn trùng kêu và tiếng suối chảy.</p>
+            <p>Sau khi dựng lều tại bãi cát, du khách có thể trải nghiệm các hoạt động trên suối như chèo sup, bơi lội, tắm suối. Nước suối êm và mát lạnh giúp xua tan cái nóng của mùa hè. Suối có nhiều cá, du khách có thể câu để thêm món cho bữa tiệc nướng.</p>
+            <p>Sau khi trải nghiệm các hoạt động tại suối, có thể chèo sup đến cửa Hang Tiên và đi bộ vào trong khám phá. Hang sâu khoảng 20 m nhưng trên trần có nhiều nhũ đá với những hình dạng và kích thước, được hình thành từ hàng trăm năm trước.</p>
+        </div>
+    <div class="full-image-section">
+        <img src="https://i1-dulich.vnecdn.net/2023/05/16/camping-hang-tien-lao-cai-2-35-8409-4480-1684236859.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=3kEVLuzuCUYV-iP3RZA5PQ" alt="Bãi Cắm Trại" class="full-width-image">
+    </div>
+    <h4>Bãi cắm trại cạnh suối, cách cửa hang Tiên khoảng 100m </h4>
+
+    <div class="full-image-section">
+      <img src="https://i1-dulich.vnecdn.net/2023/05/16/camping-hang-tien-lao-cai-5-23-9755-5737-1684236859.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=_Ru7eNxG2orCGN4ITOezsQ" alt="Chèo thuyền" class="full-width-image">
+    </div>
+    <h4>Du khách chèo thuyền trên suối, nước trong, xanh và sạch</h4>
+
+    <div class="full-image-section">
+      <img src="https://i1-dulich.vnecdn.net/2023/05/16/4655fcfd019adfc4868b2-5094-168-7246-6401-1684236859.jpg?w=0&h=0&q=100&dpr=1&fit=crop&s=M5T2yk8fAjGzbR_-ujbuVQ" alt="Khung cảnh hang Tiên nhìn xuống suối" class="full-width-image">
+    </div>
+    <h4>Khung cảnh từ hang Tiên nhìn xuống suối</h4>
+
+        <div class="intro-text">
+            <p>Vào buổi tối tại điểm cắm trại, du khách có thể tổ chức tiệc nướng, đốt lửa trại và ngắm nhìn bầu trời sao giữa núi rừng. Lội suối, soi cá, bắt tôm trong đêm là những trải nghiệm thú vị không thể tìm thấy được ở đô thị.</p>
+            <p>Anh Dũng cho biết mùa hè, từ tháng 4 đến tháng 7, là thời gian lý tưởng để đến Hang Tiên. Lúc này nước suối trong, êm, độ nông vừa đủ, thời tiết khô ráo, nhiều nắng, thuận lợi để cắm trại. Từ tháng 7 trở đi, khi hết mùa khô, mưa nhiều nên suối trở nên đục hơn, nước không còn trong xanh.</p>
+            <p>Do chưa có cơ sở du lịch nào ở gần hang, du khách cần chuẩn bị trước đồ ăn, thức uống, trang phục đi rừng, tắm suối. Luôn mặc áo phao khi thuyền di chuyển để phòng, tránh đuối nước. Anh Dũng nhấn mạnh du khách cần có ý thức giữ gìn cảnh quan, dọn dẹp rác thải sau khi cắm trại và không vứt rác xuống sông.</p>
+            <p>Nếu muốn cắm trại qua đêm, du khách nên đi theo tour, có tour guide bản địa đi cùng để đảm bảo an toàn, vì khu vực hoàn toàn biệt lập với bên ngoài, không có sóng điện thoại và wifi.</p>
+            <p>Du khách thích đi tự túc có thể đến Hang Tiên cắm trại trong ngày và nghỉ qua đêm tại các homestay, nhà nghỉ trên địa bàn các xã Trung Đô, Bảo Nhai. Giá phòng dao động trong khoảng 200.000 - 300.000 đồng/phòng/đêm. Giá thuê thuyền là 500.000 đồng hai lượt đi và về. Mỗi thuyền chở tối đa 6 khách.</p>
+        </div>
+    <div class="full-image-section">
+        <img src="https://i1-dulich.vnecdn.net/2023/05/16/HIP-1679-3328-1684236861.jpg?w=1020&h=0&q=100&dpr=1&fit=crop&s=l5uDwCYLc1gqRGvR64pGWg" alt="Thuyền của dân địa phương" class="full-width-image">
+    </div>
+    <h4>Thuyền của dân địa phương chở khách khám phá sông Chảy và Hang Tiên.</h4>
+         <div class="intro-text">
+                <p>"Những ngày hè oi bức, Hang Tiên với dòng nước mát lạnh và phong cảnh hoang sơ sẽ là điểm trốn nóng lý tưởng cho những du khách yêu thích thiên nhiên", anh Dũng nói.</p>
+          </div>
+        <h3>Quỳnh Mai</h3>
+        <h3>Ảnh: Dũng Nguyễn</h3>
+        <h3>Nguồn: Cổng thông tin điện tử huyện Bắc Hà, Lào Cai</h3>
+    </section>
+
+    <section class="travel-inspiration">
+      <h2>Cảm hứng du lịch tại Sa Pa</h2>
+      <div class="post-list">
+        <div class="post-item">
+         <a href="trang 1.html" target="_blank">
+        <img src="https://i.pinimg.com/736x/e2/00/97/e20097998f9dade5797d433cf81e2eca.jpg" alt="Tả Phìn">
+      </a>
+          <h4>Khám phá bản Tả Phìn Lào Cai - Địa điểm du lịch đậm chất Tây Bắc</h4>
+          <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+        </div>
+        <div class="post-item">
+        <a href="trang 2.html" target="_blank">
+          <img src="https://ik.imagekit.io/tvlk/blog/2022/09/dac-san-sapa-4.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Đặc sản Sapa">
+          </a>
+          <h4>Top 9 đặc sản Sapa bạn nhất định phải thử</h4>
+          <p class="author">Thao Nguyen</p>
+        </div>
+        <div class="post-item">
+        <a href="trang 3.html" target="_blank">
+          <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/ruong-bac-thang-sa-pa-duoc-vinh-du-cong-nhan-danh-lam-thang-canh.jpg" alt="Ruộng bậc thang">
+          </a>
+          <h4>Khám phá Lao Chải - Bản làng xin đẹp giữa đồi núi Sapa</h4>
+          <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+        </div>
+        <div class="post-item">
+        <a href="trang 4.html" target="_blank">
+          <img src="https://ik.imagekit.io/tvlk/blog/2023/08/cong-troi-sapa-7.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Cổng trời">
+          </a>
+          <h4>Trải nghiệm du lịch Cổng trời Sapa từ A đến Z </h4>
+          <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+        </div>
+      </div>
+    </section>
+              
+</body>
+</html>

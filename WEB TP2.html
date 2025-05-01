@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Ngày Hội Cao nguyên trắng Bắc Hà (4-6/4/2025)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Cascadia Mono;
+      background: url('https://i1-dulich.vnecdn.net/2021/08/21/A-nh-1-logo-1629529801.png?w=1200&h=0&q=100&dpr=2&fit=crop&s=e3TxLbs8W50QgYoNn2Z5PA') no-repeat center center fixed;      background-size: cover;
+      background-size: cover;
+      opacity:0,8;
+    }
+    .white-box {
+        max-width: 1200px;
+        margin: 40px auto;
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .flag {
+      width: 30px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      -webkit-backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-weather {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px;
+      }
+    } 
+    .intro-section {
+        background-color: rgba(255, 255, 255, 0.688);
+        padding: 50px;
+        font-family: Cascadia Mono;
+        align-items: center;
+    }
+    .intro-content {
+        display: flex;
+        align-items: center;
+        font-weight:lighter;
+        gap: 60px;
+    }
+    .intro-text p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #000;
+        font-weight: 300;
+    }
+    .content-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: black;
+        display: inline-block;
+        margin: 10px;
+        padding: 40px;
+    }
+    .content-image{
+      width: 200px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 60px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2c3e50;
+      text-align: center;
+      margin-top: 0;
+    }
+    .full-image-section {
+      width: 100%;
+      padding: 40px 0;
+      background-color:rgba(255, 255, 255, 0.688) ;
+      display: flex;
+      justify-content: center;
+    }
+
+    .full-width-image {
+      width: 90%;
+      max-width: 1000px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .travel-inspiration {
+      padding: 40px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .travel-inspiration h2 {
+      font-size: 28px;
+      font-family: 'Georgia', serif;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .post-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .post-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .post-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .post-list {
+      display: flex;
+      flex-wrap: nowrap; 
+      justify-content: center;
+      gap: 20px;
+      overflow-x: auto; 
+      padding: 0 20px;
+    }
+
+    .post-item {
+      flex: 0 0 220px;
+      text-align: left;
+    }
+
+    h4{
+        text-align: center;
+        font-size: 20px;
+        margin-top:0;
+        font-weight:bolder;
+        font-style: italic;
+    }
+    h3{
+        text-align: right;
+        font-size:20px;
+        margin-top: 5px;
+    }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="top-bar">
+    <div class="logo">
+      
+    <h1><b>TÂY BẮC TOUR</b></h1>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+  <nav>
+    <a href="TCindex.html"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+  
+  <div class="white-box">
+  <section class="intro-section">
+    <h2 class="section-title">Ngày Hội Cao nguyên trắng Bắc Hà (4-6/4/2025)</h2> 
+    <div class="intro-content">
+      <div class="intro-text">
+        <p> Ngày Hội Cao nguyên trắng Bắc Hà năm 2025 sẽ được tổ chức từ ngày 4 đến 6/4/2025 
+            tại Dinh Hoàng A Tưởng huyện Bắc Hà với nhiều hoạt động đặc sắc, hấp dẫn. </p>
+      </div>
+    </div> 
+    <div class="full-image-section">
+        <img src="https://scontent.iocvnpt.com/resources/portal/Images/LCI/adminsvhttdl/4%202025/ng%C3%A0y%20h%E1%BB%99i%20cao%20nguy%C3%AAn%20tr%E1%BA%AFng/ngay_hoi_cao_nguyen_trang_bac_ha%20(3)_796610899.jpg" alt="Festival Bắc Hà" class="full-width-image">
+    </div>
+        <div class="intro-text">
+            <p>Với mục tiêu quảng bá hình ảnh du lịch Lào Cai, đặc biệt là bản sắc văn hóa truyền thống của 
+            đồng bào các dân tộc thiểu số huyện Bắc Hà đến với du khách trong nước và quốc tế, tạo sản phẩm du lịch mang tính thường niên.
+            </p></div> 
+    <div class="full-image-section">
+        <img src="https://scontent.iocvnpt.com/resources/portal/Images/LCI/adminsvhttdl/4%202025/ng%C3%A0y%20h%E1%BB%99i%20cao%20nguy%C3%AAn%20tr%E1%BA%AFng/ngay_hoi_cao_nguyen_trang_bac_ha%20(4)_99775174.jpg" alt="Chợ Phiên" class="full-width-image">
+    </div>
+    <h4>Không gian tái hiện chợ phiên vùng cao</h4>
+        <div class="intro-text">
+            <p>Ngày Hội cao nguyên trắng Bắc Hà sẽ tái hiện trải nghiệm phiên chợ vùng cao và thưởng thức các món ăn ngay tại phiên chợ như bánh 
+            trưng đen, phở chua, xôi bảy màu, cơm lam, trưng bày giới thiệu các mặt hàng nông sản, đặc sản địa phương như gạo khẩu nậm sít, rau, 
+             sản phẩm thủ công ...; Tổ chức trưng bày giới thiệu nghề thủ công truyền thống của dân tộc Bắc Hà với không gian trưng bày, diễn giải 
+             “Quy trình sản xuất thổ cẩm”; Không gian trưng bày “Sản phẩm thổ cẩm thêu tay” của đồng bào dân tộc Mông, Tày, Nùng, Phù Lá …tạo điểm 
+             nhấn hấp dẫn du khách tới trải nghiệm.</p>
+            <p>Đặc biệt là không gian trưng bày triển lãm tranh, ảnh của nhiều tác giả với nhiều tác phẩm Lịch sử Bắc Hà qua các thời kì, các lễ hội 
+            truyền thống dân tộc, ảnh đẹp Bắc Hà qua các mùa hoa mận, hoa lê…phục vụ du khách chiêm ngưỡng và tìm hiểu tại các phòng trong Dinh Hoàng 
+            A Tưởng.</p>
+        </div>
+    <div class="full-image-section">
+        <img src="https://scontent.iocvnpt.com/resources/portal/Images/LCI/adminsvhttdl/4%202025/ng%C3%A0y%20h%E1%BB%99i%20cao%20nguy%C3%AAn%20tr%E1%BA%AFng/ngay_hoi_cao_nguyen_trang_bac_ha%20(1)_103077147.jpg" alt="Vũ Điệu Xòe Hoa" class="full-width-image">
+    </div>
+    <h4>Vũ điệu xoè hoa dân tộc Tày</h4>
+    <div class="full-image-section">
+        <img src="https://scontent.iocvnpt.com/resources/portal/Images/LCI/adminsvhttdl/4%202025/ng%C3%A0y%20h%E1%BB%99i%20cao%20nguy%C3%AAn%20tr%E1%BA%AFng/ngay_hoi_cao_nguyen_trang_bac_ha%20(2)_688631366.jpg" alt="Vẽ Sắp Ong" class="full-width-image">
+    </div>
+    <h4>Nghệ thuật vẽ sắp ong dân tộc Mông</h4>
+         <div class="intro-text">
+                <p>Ngoài ra bạn sẽ còn được trải nghiệm không gian vũ điệu xoè hoa, múa gậy sinh tiền kết hợp với  các trò chơi dân gian như đi cà kheo, bịt mắt bắt vịt, tó má lẹ, đánh yến…  do các nghệ nhân đến từ các xã Tà Chải, Na Lo huyện biểu diễn.</p>
+                <p>Ngày Hội Cao nguyên trắng Bắc Hà là sản sẩn phẩm du lịch đặc sắc và độc đáo riêng có của Bắc Hà nhằm tiến đến xây dựng thương hiệu, đa dạng hoá sản phẩm du lịch, bảo tồn và phát huy các giá trị văn hóa mang đậm bản sắc dân tộc tại vùng đất cao nguyên trắng này.</p>
+        </div>
+        <h3>Kim Anh</h3>
+    </section>
+              
+    <section class="travel-inspiration">
+        <h2>Cảm hứng du lịch tại Sa Pa</h2>
+        <div class="post-list">
+          <div class="post-item">
+           <a href="trang 1.html" target="_blank">
+          <img src="https://i.pinimg.com/736x/e2/00/97/e20097998f9dade5797d433cf81e2eca.jpg" alt="Tả Phìn">
+        </a>
+            <h4>Khám phá bản Tả Phìn Lào Cai - Địa điểm du lịch đậm chất Tây Bắc</h4>
+            <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+          </div>
+          <div class="post-item">
+          <a href="trang 2.html" target="_blank">
+            <img src="https://ik.imagekit.io/tvlk/blog/2022/09/dac-san-sapa-4.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Đặc sản Sapa">
+            </a>
+            <h4>Top 9 đặc sản Sapa bạn nhất định phải thử</h4>
+            <p class="author">Thao Nguyen</p>
+          </div>
+          <div class="post-item">
+          <a href="trang 3.html" target="_blank">
+            <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/ruong-bac-thang-sa-pa-duoc-vinh-du-cong-nhan-danh-lam-thang-canh.jpg" alt="Ruộng bậc thang">
+            </a>
+            <h4>Khám phá Lao Chải - Bản làng xin đẹp giữa đồi núi Sapa</h4>
+            <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+          </div>
+          <div class="post-item">
+          <a href="trang 4.html" target="_blank">
+            <img src="https://ik.imagekit.io/tvlk/blog/2023/08/cong-troi-sapa-7.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Cổng trời">
+            </a>
+            <h4>Trải nghiệm du lịch Cổng trời Sapa từ A đến Z </h4>
+            <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+          </div>
+        </div>
+      </section>
+</body>
+</html>
