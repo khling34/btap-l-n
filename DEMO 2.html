@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Cam nang du lich Tay Bac</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    header {
+      background: url('https://longphutravel.com/uploads/articles/kinh-nghiem-du-lich-sapa/king-nghiem-du-lich-sapa-longphutourist.com-03.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: left;
+      padding: 40px 20px; 
+      height: 500px;  
+      filter: blur(0,5px);
+    }
+    header p {
+      font-size: 1.5em;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    header h1{
+      font-size: 6em;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: auto;
+    }
+    header h2{
+      font-size: 3em;
+      color: rgba(255, 255, 255, 0.711);
+    }
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .weather {
+      background: #45b5d4;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+    .flag {
+      width: 30px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      -webkit-backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-weather {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: Cascadia Mono;
+    }
+    h1 {
+    color: #047857; /* green-700 */
+    font-weight: 500;
+    font-size: 35px; /* text-lg */
+    margin-bottom: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 30px; /* text-base */
+    margin-bottom: 5px;
+     padding-left: 15px;
+    padding-right: 15px;
+  }
+  .underline-single {
+  border-bottom: 1px dashed #64748b;   padding-top: 4px;
+  padding-bottom: 4px;
+}
+  p#main-text {
+    font-size: 14px; /* text-xs */
+    margin-bottom: 12px;
+    max-width: 100%;
+       padding-left: 15px;
+    padding-right: 15px;
+           
+  }
+  .arrow-btn {
+    color: black;
+    border: none;
+    background: none;
+    cursor: pointer;
+    user-select: none;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+     padding-top: 4px;
+  padding-bottom: 4px;
+ 
+  }
+  .arrow-btn svg {
+    stroke-width: 2.5;
+  }
+  .container-arrows {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000%;
+    margin-bottom: 16px;
+  }
+  .full-width-black-bg {
+    background-color: #0f172a; /* slate-900 */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    color: white;
+    font-family: Cascadia Mono ;
+    font-size: 17px; /* bigger text */
+    border-bottom: 1px solid #334155;
+    border-top: 1px solid #334155; /* slate-700 */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 100vh; 
+  box-sizing: border-box;
+  }
+ .content-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .content-inner > div {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .content-inner > div.font-semibold {
+    font-weight: 500;
+  }
+  .content-inner > div.title-large {
+    font-size: 20px; /* slightly larger */
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .flex-row {
+    display: flex;
+    gap: 20px;
+  }
+  .left-menu {
+  padding: 0;
+    width: auto;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 900;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .left-menu button {
+    background-color: white; /* slate-600 */
+    border: none;
+    border-radius: 7px;
+    padding: 5px 11px;
+    font-family: Cascadia Mono ;
+    font-size: 10px;
+    font-weight: bold;
+    color:#047857 ;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    width: max-content;
+    min-width: 100px;
+  }
+  .left-menu button.active {
+    background-color: #16a34a; /* green-600 */
+    color: white;
+  }
+  .right-content {
+    background-color: white;
+    color: black;
+    font-family: Cascadia Mono ;
+    font-size: 13px;
+    padding: 12px;
+    flex-grow: 1;
+    min-height: 100px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    max-width: 500px;
+  }
+  @media (max-width: 640px) {
+    .flex-row {
+      flex-direction: column;
+    }
+    .left-menu {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 8px;
+      padding: 0;
+    }
+    .left-menu button {
+      margin-bottom: 0;
+      flex: 1;
+      max-width: none;
+      min-width: 80px;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+    .right-content {
+      min-height: auto;
+      margin-top: 16px;
+      max-width: 100%;
+    }
+  }
+    
+    details {
+  background-color: white;
+  color: black;
+  padding: 5px 11px;
+  border-radius: 7px;
+  box-sizing: border-box;
+  margin: 0 auto 16px auto;
+  width: 100%;
+  max-width:750px; 
+  min-height: 30px;
+  flex-grow: 1;
+  
+    }
+    details summary {
+      font-weight: 600;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px; /* 14px */
+      user-select: none;
+    }
+    /* Remove default marker */
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+    details p {
+      margin-top: 0.5rem;
+      font-size: 0.75rem; /* 12px */
+      line-height: 1.4;
+      font-weight: 400;
+      white-space: pre-line;
+    }
+    /* Arrow icon styling */
+    .arrow-icon {
+      font-family: monospace;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1;
+      user-select: none;
+      transition: transform 0.3s ease;
+      color:  #16a34a;
+      display: inline-block;
+      width: 30px;
+      text-align: center;
+    }
+    details[open] .arrow-icon {
+      transform: rotate(180deg);
+    }
+    
+    .travel-inspiration {
+  padding: 40px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.travel-inspiration h2 {
+  font-size: 28px;
+  font-family: 'Courier New', monospace;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.post-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-item img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.post-list {
+  display: flex;
+  flex-wrap: nowrap; 
+  justify-content: center;
+  gap: 20px;
+  overflow-x: auto; 
+  padding: 0 20px;
+}
+
+.post-item {
+  flex: 0 0 220px;
+  text-align: left;
+}
+    
+    
+    </style>
+<body>
+<div class="background"></div>
+  <div class="top-bar">
+    <div class="logo">
+      
+      <h1><b>TÂY BẮC TOUR</b></h1>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+  <nav>
+    <a href="#"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+  <header>
+    <h1>Lào Cai</h1>
+    <h2>Vùng đất mây phủ</h2>
+  </header>
+  <h1>Cẩm nang du lịch</h1>
+  <h2>Huyện Sa Pa</h2>
+  <p id="main-text">
+    Huyện Sa Pa thuộc tỉnh Lào Cai là điểm đến lý tưởng với cảnh quan thiên nhiên hùng vĩ và khí hậu mát mẻ. Du khách đến đây sẽ được chiêm ngưỡng đỉnh Phan Xi Păng – ngọn núi cao nhất Việt Nam nổi được mệnh danh là "nóc nhà Đông Dương". Những thửa ruộng bậc thang trải dài bát tận dưới ánh nắng vàng là hình ảnh biểu tượng của Sa Pa, tạo nên một bức tranh thiên nhiên đầy mê hoặc. Thung lũng Mường Hoa với các nét vẽ đá cổ xưa và các bản làng như Tả Van, Lao Chải mang
+  </p>
+  <div class="container-arrows">
+    <button aria-label="Previous" id="prevBtn" class="arrow-btn" title="Nội dung trước">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button aria-label="Next" id="nextBtn" class="arrow-btn" title="Nội dung tiếp">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+  <section class="full-width-black-bg" role="region" aria-label="Nội dung du lịch Sa Pa">
+    <div class="content-inner">
+      <div class="title-large">Mẹo du lịch khi tới Sa Pa</div>
+      <div class="underline-single">Những điều bạn cần biết trước khi đến đây</div>
+      <div class="title-large">Tham quan huyện Sapa</div>
+      <div class="underline-single">Hướng dẫn về phương tiện giao thông tại huyện Sapa</div>
+      <br>
+      <div class="flex-row">
+        <div class="left-menu" role="list">
+          <button type="button" class="active" data-index="0" aria-pressed="true">Xe máy thuê</button>
+          <button type="button" data-index="1" aria-pressed="false">Xe ôm</button>
+          <button type="button" data-index="2" aria-pressed="false">Thuê xe ô tô</button>
+          <button type="button" data-index="3" aria-pressed="false">Xe bus địa phương</button>
+          <button type="button" data-index="4" aria-pressed="false">Xe điện</button>
+          <button type="button" data-index="5" aria-pressed="false">Taxi</button>
+          <button type="button" data-index="6" aria-pressed="false">Đi bộ</button>
+        </div>
+        <div id="content-text" class="right-content" tabindex="0">
+          Thuê xe máy là một trong những cách phổ biến và linh hoạt nhất để khám phá Sa Pa. 
+                  Giá thuê dao động từ 150.000đ đến 200.000đ/ngày tùy loại xe. 
+                  Bạn có thể thuê xe tại các khách sạn, homestay hoặc các cửa hàng cho thuê xe trong thị trấn.
+                   Lưu ý mang theo giấy tờ tùy thân và bằng lái xe để đặt cọc. Xe máy giúp bạn dễ dàng di chuyển đến các điểm du lịch như Cổng Trời, thác Bạc, bản Cát Cát một cách chủ động.
+        </div>
+      </div>
+ 
+<script>
+  const mainTexts = [
+    `Huyện Sa Pa thuộc tỉnh Lào Cai là điểm đến lý tưởng với cảnh quan thiên nhiên hùng vĩ và khí hậu mát mẻ. Du khách đến đây sẽ được chiêm ngưỡng đỉnh Phan Xi Păng – ngọn núi cao nhất Việt Nam nổi được mệnh danh là "nóc nhà Đông Dương". Những thửa ruộng bậc thang trải dài bát tận dưới ánh nắng vàng là hình ảnh biểu tượng của Sa Pa, tạo nên một bức tranh thiên nhiên đầy mê hoặc. Thung lũng Mường Hoa với các nét vẽ đá cổ xưa và các bản làng như Tả Van, Lao Chải mang`,
+    `Sa Pa là một thị trấn vùng cao nổi tiếng với khí hậu mát mẻ quanh năm, thu hút nhiều khách du lịch trong và ngoài nước. Ngoài cảnh quan thiên nhiên tuyệt đẹp, Sa Pa còn nổi bật với văn hóa đa dạng của các dân tộc thiểu số như H'Mông, Dao, Tày, và Giáy. Du khách có thể trải nghiệm các hoạt động như trekking, thăm bản làng, thưởng thức ẩm thực đặc trưng và tham gia các lễ hội truyền thống.`,
+    `Phan Xi Păng, hay còn gọi là Fansipan, là ngọn núi cao nhất Việt Nam và được mệnh danh là "Nóc nhà Đông Dương". Việc chinh phục đỉnh Fansipan là một trải nghiệm khó quên đối với những người yêu thích leo núi và khám phá thiên nhiên. Ngoài ra, Sa Pa còn có nhiều điểm tham quan hấp dẫn khác như thác Bạc, thung lũng Mường Hoa, và chợ tình Sa Pa.`,
+  ];
+
+  const contentTexts = [
+    ` Thuê xe máy là một trong những cách phổ biến và linh hoạt nhất để khám phá Sa Pa. 
+                  Giá thuê dao động từ 150.000đ đến 200.000đ/ngày tùy loại xe. 
+                  Bạn có thể thuê xe tại các khách sạn, homestay hoặc các cửa hàng cho thuê xe trong thị trấn.
+                   Lưu ý mang theo giấy tờ tùy thân và bằng lái xe để đặt cọc. Xe máy giúp bạn dễ dàng di chuyển đến các điểm du lịch như Cổng Trời, thác Bạc, bản Cát Cát một cách chủ động.`,
+    ` Dịch vụ xe ôm có mặt khắp thị trấn Sa Pa, đặc biệt tập trung nhiều ở khu vực chợ và nhà thờ đá. 
+                 Giá cả thường được thỏa thuận trước khi đi, dao động từ 50.000đ đến 100.000đ cho quãng đường ngắn trong thị trấn, và có thể lên đến 200.000 - 300.000 VND cho các điểm xa hơn.
+                  Các tài xế xe ôm thường rất am hiểu địa phương và có thể đóng vai trò như hướng dẫn viên địa phương.`,
+    `Dịch vụ thuê xe ô tô tại Sa Pa ngày càng phát triển với nhiều lựa chọn từ xe 4 chỗ đến 7 chỗ. 
+                   Giá thuê xe tự lái dao động từ 700.000đ đến 1.500.000đ/ngày tùy loại xe. Nếu thuê xe có tài xế, giá sẽ từ 1.000.000đ đến 2.000.000 VND/ngày. 
+                   Các công ty cho thuê xe thường yêu cầu đặt cọc bằng tiền mặt hoặc giấy tờ có giá trị và giấy phép lái xe hợp lệ.`,
+    `Sa Pa có hệ thống xe bus nội thị kết nối các điểm du lịch chính trong khu vực. 
+                  Giá vé rẻ, khoảng 10.000đ-15.000đ/lượt, phù hợp với khách du lịch muốn tiết kiệm chi phí. 
+                  Tuy nhiên, tần suất xe chạy không cao và thời gian chờ đợi có thể khá lâu.`,
+    `Dịch vụ xe điện trong thị trấn Sa Pa khá phát triển,trong khu vực trung tâm. 
+                  Giá vé khoảng 15.000 - 20.000 VND/lượt/người cho các tuyến ngắn trong thị trấn. 
+                  Xe điện thường chạy theo tuyến cố định và dừng ở các điểm tham quan chính, thuận tiện cho việc tham quan thị trấn`,
+    ` Các hãng taxi uy tín như Mai Linh, Sao Đỏ hoạt động thường xuyên tại Sa Pa. 
+                  Giá cước theo đồng hồ, với giá mở cửa khoảng 12.000 - 15.000 VND cho 1-2km đầu tiên. 
+                  Taxi là phương tiện an toàn và tiện lợi, đặc biệt trong những ngày mưa hoặc di chuyển vào buổi tối.`,
+    `Mặc dù không phải phương tiện di chuyển, nhưng đi bộ là cách tuyệt vời để khám phá trung tâm thị trấn Sa Pa và các bản làng gần đó. 
+                  Nhiều điểm tham quan trong thị trấn nằm trong khoảng cách đi bộ thuận tiện, giúp bạn tận hưởng không khí trong lành và ngắm cảnh đẹp của vùng núi.`,
+  ];
+
+  const mainTextEl = document.getElementById('main-text');
+  const contentTextEl = document.getElementById('content-text');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const transportButtons = document.querySelectorAll('.left-menu button');
+
+  let mainIndex = 0;
+  let contentIndex = 0;
+
+  function updateMainText() {
+    mainTextEl.textContent = mainTexts[mainIndex];
+  }
+
+  function updateContentText() {
+    contentTextEl.textContent = contentTexts[contentIndex];
+    transportButtons.forEach((btn, i) => {
+      const active = i === contentIndex;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    mainIndex = (mainIndex - 1 + mainTexts.length) % mainTexts.length;
+    updateMainText();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    mainIndex = (mainIndex + 1) % mainTexts.length;
+    updateMainText();
+  });
+
+  transportButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      contentIndex = Number(btn.dataset.index);
+      updateContentText();
+    });
+  });
+
+  updateMainText();
+  updateContentText();
+</script>
+<div class="title-large">Mẹo thiết thực khi đến Huyện Sa Pa</div>
+   <div class="underline-single">Những thứ cần chuẩn bị và cách tốt nhất để tham quan</div>
+<br>
+  <details>
+    <summary>
+      1. Thời điểm nào trong năm là đẹp nhất để du lịch Sa Pa?
+      <span class="arrow-icon" aria-hidden="true">v</span>
+    </summary>
+    <p>
+      Sa Pa đẹp quanh năm nhưng thời điểm lý tưởng nhất là từ tháng 9 đến tháng 11 khi thời tiết mát mẻ, khô ráo và là mùa lúa chín vàng trên các thửa ruộng bậc thang, hoặc từ tháng 1 đến tháng 3 khi hoa đào, hoa mận nở rộ và thời tiết ấm áp, trong xanh.
+    </p>
+  </details>
+
+  <details>
+    <summary>
+      2. Từ Hà Nội đến Sa Pa bằng phương tiện gì thuận tiện nhất?
+      <span class="arrow-icon" aria-hidden="true">v</span>
+    </summary>
+    <p>Cách thuận tiện nhất là đi tàu hỏa từ ga Hà Nội đến ga Lào Cai (khoảng 8 tiếng), sau đó đi xe khách từ Lào Cai lên Sa Pa (khoảng 1 giờ), hoặc có thể đi xe limousine từ Hà Nội thẳng đến Sa Pa (khoảng 5 - 6 tiếng) với nhiều nhà xe uy tín như Sapa Express, Good Morning Sapa.</p>
+  </details>
+
+  <details>
+    <summary>
+      3. Những địa điểm nào ở Sa Pa không nên bỏ lỡ khi đi du lịch?
+      <span class="arrow-icon" aria-hidden="true">v</span>
+    </summary>
+      <p>Du khách nên ghé thăm đỉnh Fansipan - nóc nhà Đông Dương, thung lũng Mường Hoa với ruộng bậc thang tuyệt đẹp, bản Cát Cát để tìm hiểu văn hóa dân tộc H'Mông, Nhà thờ Đá Sa Pa, chợ Sa Pa, và đặc biệt là trải nghiệm leo núi Hàm Rồng để ngắm toàn cảnh thị trấn</p>
+    </details>
+  <details>
+    <summary>
+      4. Nên mang theo những đồ gì khi du lịch Sa Pa?
+      <span class="arrow-icon" aria-hidden="true">v</span>
+    </summary>
+     <p>Cần chuẩn bị quần áo ấm kể cả vào mùa hè vì Sa Pa có thời tiết se lạnh, giày đi bộ chống trượt để leo núi và đi bộ, áo mưa hoặc ô, kem chống nắng, thuốc chống say độ cao, và máy ảnh để ghi lại những khoảnh khắc đẹp trong chuyến đi.
+  </p>
+</details>
+  <details>
+    <summary>
+      5. Chi phí trung bình cho một chuyến đi Sa Pa 3 ngày 2 đêm là bao nhiêu?
+      <span class="arrow-icon" aria-hidden="true">v</span>
+    </summary>
+    <p>Một chuyến đi Sa Pa 3 ngày 2 đêm với chi phí trung bình khoảng 2.500.000 - 3.500.000 VND/người, bao gồm phương tiện di chuyển từ Hà Nội, khách sạn 3 sao, các bữa ăn, vé tham quan các điểm du lịch và chi phí phát sinh khác.</p>
+  </details>
+    </section>
+    </div>
+    <section class="travel-inspiration">
+      <h2>Cảm hứng du lịch tại Sa Pa</h2>
+      <div class="post-list">
+        <div class="post-item">
+         <a href="trang 1.html" target="_blank">
+        <img src="https://i.pinimg.com/736x/e2/00/97/e20097998f9dade5797d433cf81e2eca.jpg" alt="Tả Phìn">
+      </a>
+          <h4>Khám phá bản Tả Phìn Lào Cai - Địa điểm du lịch đậm chất Tây Bắc</h4>
+          <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+        </div>
+        <div class="post-item">
+        <a href="trang 2.html" target="_blank">
+          <img src="https://ik.imagekit.io/tvlk/blog/2022/09/dac-san-sapa-4.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Đặc sản Sapa">
+          </a>
+          <h4>Top 9 đặc sản Sapa bạn nhất định phải thử</h4>
+          <p class="author">Thao Nguyen</p>
+        </div>
+        <div class="post-item">
+        <a href="trang 3.html" target="_blank">
+          <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/ruong-bac-thang-sa-pa-duoc-vinh-du-cong-nhan-danh-lam-thang-canh.jpg" alt="Ruộng bậc thang">
+          </a>
+          <h4>Khám phá Lao Chải - Bản làng xin đẹp giữa đồi núi Sapa</h4>
+          <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+        </div>
+        <div class="post-item">
+        <a href="trang 4.html" target="_blank">
+          <img src="https://ik.imagekit.io/tvlk/blog/2023/08/cong-troi-sapa-7.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Cổng trời">
+          </a>
+          <h4>Trải nghiệm du lịch Cổng trời Sapa từ A đến Z </h4>
+          <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+        </div>
+      </div>
+    </section>
+    
+  </body>
+</html>
+  
+
