@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Đặt Vé Tây Bắc Tour</title>
+  <style>
+    body {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 20px;
+      position: relative;
+    }
+    .steps {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .step {
+      text-align: center;
+      flex: 1;
+    }
+    .step-number {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ccc;
+      color: white;
+      line-height: 30px;
+      margin: 0 auto 5px;
+    }
+    .step.active .step-number,
+    .step.visited .step-number {
+      background-color: #4CAF50;
+    }
+    .section {
+      margin-bottom: 20px;
+      border: 2px solid #ccc;
+      padding: 10px;
+    }
+    .section-title {
+      font-weight: bold;
+      border-bottom: 2px solid green;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+    }
+    label, input, select {
+      display: block;
+      width: 100%;
+      margin-bottom: 5px;
+    }
+    .flex-group {
+      display: flex;
+      gap: 10px;
+    }
+    .flex-group input {
+      flex: 1;
+    }
+    .price-box {
+      position: fixed;
+      right: 50px;
+      top: 150px;
+      background: white;
+      border: 1px solid #000;
+      padding: 10px;
+      width: 150px;
+      font-family: monospace;
+    }
+    .price-box p {
+      margin: 5px 0;
+    }
+    .total {
+      font-weight: bold;
+    }
+    .btn {
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      width: 100%;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #45a049;
+    }
+    .highlight {
+      background-color: #c6efce;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+    }
+    .hidden { display: none; }
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+    }
+    .error-msg {
+      color: red;
+      font-size: 0.85em;
+      margin-top: -5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="steps">
+      <div class="step active" id="nav1"><div class="step-number">1</div>Hành Trình</div>
+      <div class="step" id="nav2"><div class="step-number">2</div>Hành Khách</div>
+      <div class="step" id="nav3"><div class="step-number">3</div>Thanh Toán</div>
+    </div>
+
+    <!-- Hành Trình -->
+    <div class="section" id="step1">
+      <div class="section-title">2 hành khách</div>
+      <p>22:00 Hà Nội</p>
+      <p>Hãng: Violet Express</p>
+      <p>8h 5p đi xe lửa #SP3 với Violette Express Train hạng Nằm VIP 4x</p>
+      <p>⭐ 3,5</p>
+      <p>06:00 Lào Cai</p>
+      <hr>
+      <p>Làm thủ tục bằng vé điện tử trên điện thoại di động</p>
+      <p>Có thể huỷ bỏ (kiểm tra quy tắc)</p>
+      <div class="nav-buttons">
+        <button class="btn" onclick="nextStep(2, this)">Bước tiếp theo</button>
+      </div>
+    </div>
+
+    <!-- Hành Khách -->
+    <div class="section hidden" id="step2">
+      <div class="section-title">Chi tiết liên lạc</div>
+      <input type="tel" id="phone" placeholder="Điện thoại" required pattern="^\d{10}$">
+      <div class="error-msg" id="error-phone"></div>
+
+      <input type="email" id="email" placeholder="Email" required pattern=".+@gmail\.com$">
+      <div class="error-msg" id="error-email"></div>
+
+      <div class="section-title">Hành khách chính</div>
+      <input type="text" id="firstName" placeholder="Tên" required pattern="^[A-Za-zÀ-ỹ ]+$">
+      <div class="error-msg" id="error-firstName"></div>
+
+      <input type="text" id="lastName" placeholder="Họ" required pattern="^[A-Za-zÀ-ỹ ]+$">
+      <div class="error-msg" id="error-lastName"></div>
+
+      <input type="date" id="dob" required>
+      <div class="error-msg" id="error-dob"></div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="nextStep(1)">&#8592; Quay lại</button>
+        <button class="btn" onclick="nextStep(3, this)">Bước tiếp theo</button>
+      </div>
+    </div>
+
+    <!-- Thanh Toán -->
+    <div class="section hidden" id="step3">
+      <div class="section-title">Thanh Toán</div>
+      <div class="highlight">Tất cả các dữ liệu thanh toán đều được mã hóa và bảo mật</div>
+      <input type="text" id="cardNumber" placeholder="Số Thẻ" required pattern="^\d+$">
+      <div class="error-msg" id="error-cardNumber"></div>
+
+      <input type="text" id="bank" placeholder="Ngân Hàng" required>
+      <div class="error-msg" id="error-bank"></div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="nextStep(2)">&#8592; Quay lại</button>
+        <button class="btn" onclick="validateAndPay(this)">Thanh toán 1.045.514 đ</button>
+      </div>
+    </div>
+
+    <!-- Price Box -->
+    <div class="price-box">
+      <p>Vé 800.000 đ</p>
+      <p>Bảo Hiểm 116.741 đ</p>
+      <p>Thuế 4.853 đ</p>
+      <p class="total">Tổng: 1.045.514 đ</p>
+    </div>
+  </div>
+
+  <script>
+    function nextStep(stepNum, btn = null) {
+      if (btn) {
+        const section = btn.closest('.section');
+        const inputs = section.querySelectorAll('input');
+        let valid = true;
+        for (let input of inputs) {
+          const errorEl = document.getElementById('error-' + input.id);
+          if (!input.value.trim()) {
+            errorEl.textContent = "Hãy điền đầy đủ thông tin";
+            valid = false;
+          } else if (!input.checkValidity()) {
+            if (input.id === 'cardNumber') {
+              errorEl.textContent = "Vui lòng nhập đúng số thẻ";
+            } else {
+              errorEl.textContent = "Vui lòng nhập đúng định dạng";
+            }
+            valid = false;
+          } else {
+            errorEl.textContent = "";
+          }
+        }
+        if (!valid) return;
+      }
+
+      document.querySelectorAll(".section").forEach(el => el.classList.add("hidden"));
+      document.getElementById("step" + stepNum).classList.remove("hidden");
+
+      document.querySelectorAll(".step").forEach((el, i) => {
+        el.classList.remove("active", "visited");
+        if (i + 1 < stepNum) el.classList.add("visited");
+        if (i + 1 === stepNum) el.classList.add("active");
+      });
+    }
+
+    function validateAndPay(btn) {
+      const section = btn.closest('.section');
+      const inputs = section.querySelectorAll('input');
+      let valid = true;
+      for (let input of inputs) {
+        const errorEl = document.getElementById('error-' + input.id);
+        if (!input.value.trim()) {
+          errorEl.textContent = "Vui lòng điền đầy đủ thông tin";
+          valid = false;
+        } else if (!input.checkValidity()) {
+          if (input.id === 'cardNumber') {
+            errorEl.textContent = "Vui lòng nhập đúng số thẻ";
+          } else {
+            errorEl.textContent = "Vui lòng nhập đúng định dạng";
+          }
+          valid = false;
+        } else {
+          errorEl.textContent = "";
+        }
+      }
+      if (!valid) return;
+      alert('Thanh toán thành công!');
+    }
+  function validateAndPay(btn) {
+    const section = btn.closest('.section');
+    const inputs = section.querySelectorAll('input');
+    let valid = true;
+  
+    for (let input of inputs) {
+      const errorEl = document.getElementById('error-' + input.id);
+      if (!input.value.trim()) {
+        errorEl.textContent = "Vui lòng điền đầy đủ thông tin";
+        valid = false;
+      } else if (!input.checkValidity()) {
+        if (input.id === 'cardNumber') {
+          errorEl.textContent = "Vui lòng nhập đúng số thẻ";
+        } else {
+          errorEl.textContent = "Vui lòng nhập đúng định dạng";
+        }
+        valid = false;
+      } else {
+        errorEl.textContent = "";
+      }
+    }
+  
+    if (!valid) return;
+  
+    // Nếu hợp lệ, thông báo thanh toán
+    alert('Thanh toán thành công!');
+  
+    // Xoá tất cả input ở mọi bước
+    document.querySelectorAll('input').forEach(input => input.value = '');
+  
+    // Xoá luôn các thông báo lỗi (nếu có)
+    document.querySelectorAll('.error-msg').forEach(msg => msg.textContent = '');
+  
+    // Quay về bước đầu tiên
+    nextStep(1);
+  }
+</script>
+</body>
+</html>
