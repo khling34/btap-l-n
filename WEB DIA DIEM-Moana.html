@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Moana-Sapa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Cascadia Mono;
+      background: url('https://cdn.tripspoint.com/uploads/photos/11765/2-days-2-nights-sapa-moana-fansipan-cat-cat-village_0H07G.jpeg') no-repeat center center fixed;
+  background-size: cover;
+    }
+  
+    header h1{
+      font-size: 6em;
+      color:  rgba(255, 255, 255, 0.9);
+      margin-bottom: auto;
+      margin-left: 30px;
+    }
+    header h2{
+      font-size: 3em;
+      color:   rgba(255, 255, 255, 0.9);
+      margin-left: 30px;
+    }
+    .white-box {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .flag {
+      width: 30px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      -webkit-backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-weather {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px;
+      }
+    } 
+    .intro-section {
+        background-color: rgba(255, 255, 255, 0.688);
+        padding: 50px;
+        font-family: Cascadia Mono
+    }
+    .intro-content {
+        display: flex;
+        align-items: center;
+        font-weight:lighter;
+        gap: 60px;
+    }
+    .intro-image img {
+        width: 170px;
+        height: 170px;
+        border: 0.5px solid #335599;
+        border-radius: 50%;
+        padding: 10px;
+        background-color: white;
+    }
+    .intro-text p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #000;
+        font-weight: 300;
+    }
+    .content-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: black;
+        display: inline-block;
+        margin: 10px;
+        padding: 40px;
+    }
+    .content-image{
+      width: 200px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+    .full-image-section {
+      width: 100%;
+      padding: 40px 0;
+      background-color:rgba(255, 255, 255, 0.688) ;
+      display: flex;
+      justify-content: center;
+    }
+
+    .full-width-image {
+      width: 90%;
+      max-width: 1000px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .travel-inspiration {
+      padding: 40px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .travel-inspiration h2 {
+      font-size: 28px;
+      font-family: 'Georgia', serif;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .post-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .post-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .post-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .post-list {
+      display: flex;
+      flex-wrap: nowrap; 
+      justify-content: center;
+      gap: 20px;
+      overflow-x: auto; 
+      padding: 0 20px;
+    }
+
+    .post-item {
+      flex: 0 0 220px;
+      text-align: left;
+    }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="top-bar">
+    <div class="logo">
+      
+    <h1><b>TÂY BẮC TOUR</b></h1>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+  <nav>
+    <a href="#"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+  <header>
+    <h1>Moana Sapa</h1>
+    <h2>Tiểu "Bali" giữa núi đồi mờ sương</h2>
+  </header>
+  <div class="white-box">
+  <section class="intro-section">
+    <h2 class="section-title">Giới Thiệu Chung</h2>
+    <div class="intro-content">
+      <div class="intro-image">
+        <img src="https://scontent.fhan5-2.fna.fbcdn.net/v/t39.30808-6/481920331_479015401957187_7762842063624389232_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=yBuzzvhmHnQQ7kNvwGDDPu4&_nc_oc=AdmtylW6pMGKa_t6Jumv3HgOoSSwM7NWPcy7LVMjqv3OpfbCtmWo68hqQWLhzbfEnpc&_nc_zt=23&_nc_ht=scontent.fhan5-2.fna&_nc_gid=_6QY3Cb9fcjipbnJcL_qqQ&oh=00_AfF26r_3We2om0ttoCWZaCji32ni7RHYLwvmdEGrmzQNEg&oe=681A34FA" alt="Logo Lào Cai">
+      </div>
+      <div class="intro-text">
+        <p>“Moana Sapa” là một điểm đến độc đáo ở vùng Tây Bắc, nơi vẻ đẹp thiên nhiên hoang sơ hòa quyện cùng những thiết kế hiện đại, tạo nên không gian vừa lạ mắt vừa cuốn hút. Với những góc sống ảo độc đáo tựa trời Âu, nơi đây hứa hẹn sẽ là “thiên đường check-in” mà bất kỳ ai cũng muốn ghé thăm khi đặt chân đến Sapa.</p>
+        <p><b>Vị trí:</b> Số 68 đường Violets, phường Cầu Mây, Thành phố Sapa. </p>
+      </div>
+      </div>
+      <h2 class="section-title">Một Vài Nét</h2>
+        <div class="intro-text">
+            <p>Nằm cách trung tâm thành phố chừng 500m, Moana Sapa được xây dựng với nhiều tiểu cảnh độc đáo, khác biệt nhằm mang đến cho các tín đồ đam mê "sống ảo" một nơi để check-in 7749 tấm hình. Với tổng diện tích rộng lớn lên đến 10.000m2, Moana Sapa được giới trẻ "săn lùng" những ngày gần đây và trở thành cái tên cực hot mà bất cứ ai cũng mong muốn một lần ghé tham quan nếu có dịp du lịch Sapa.</p></div> </section>
+        <div class="full-image-section">
+            <img src="https://media.holidify.com/images/cmsuploads/compressed/Moana-Sapa_20250124103754.jpg">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Khám Phá Moana</h2>
+          <div class="intro-text">
+            <p>Được mệnh danh là Bali thu nhỏ giữa lòng Sapa, điểm đến thú vị này còn vô vàn tọa độ check-in sống ảo có 1-0-2. Một trong số đó chính là cổng trời Ô Quy Hồ gây sốt những ngày gần đây. Cổng trời Bali từ lâu đã được tái hiện lại ở rất nhiều quốc gia khác nhau, trong đó có ở Sapa, Việt Nam. Chỉ cần thuê một bộ trang phục xinh xắn là bạn đã có thể thỏa sức tạo dáng giữa khung cảnh đất trời thơ mộng..</p>
+            <p>Được xây dựng với nhiều nét kiến trúc khá giống tượng cô gái Moana Sapa, phần nền của cổng trời Ô Quy Hồ lát bằng gạch đá trong suốt. Đừng quên tận dụng điều này để giúp cho bức ảnh của mình thêm độc đáo nhé!
+            </p></div></section>
+          <div class="full-image-section">
+            <img src="https://sinhtour.vn/wp-content/uploads/2021/12/tieu-canh-moana-sapa-12.jpg">
+        </div>
+
+
+    
+          <h2 class="section-title">Một vài kinh nghiệm</h2>
+          <div class="intro-text">
+            <p>Sáng sớm hoặc chiều tà sẽ là thời điểm thích hợp để bạn đến đây chụp ảnh và tạo nên những bức hình có 1-0-2.! 
+            Bạn cũng có thể tới Moana Sapa từ sớm và chờ lúc hoàng hôn buông xuống tầm 16 giờ chiều để chụp ảnh thêm phần huyền bí, mờ ảo.</p>
+            <p>- <b>Quần áo:</b> Chuẩn bị một số bộ quần áo phù hợp để thay đổi phong cách thời trang khi vui chơi và chụp ảnh tại đây.</p>
+            <p>- <b>Thời tiết:</b>Bình minh và hoàng hôn tại "Moana Sapa" là những khoảnh khắc vàng để bạn săn những bức ảnh tuyệt đẹp, khi ánh sáng dịu dàng tạo nên khung cảnh huyền ảo, lãng mạn khó quên. Khung cảnh lúc này trở nên huyền bí và lãng mạn, với những tia nắng nhẹ nhàng chiếu xuyên qua sương mù, tạo nên những bức ảnh tuyệt vời và kỷ niệm khó quên.</p>
+          </div>
+        </section>
+        <div class="full-image-section">
+          <img src="https://phuotvivu.com/blog/wp-content/uploads/2021/09/quan-cafe-panorama-sapa.jpg" alt="anh" class="full-width-image">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Chi Phí</h2>
+          <div class="intro-text">
+            <h3 style="color:goldenrod">Giá vé </h3>
+            <p><b>Giá vé vào:</b> 80.000 – 180.000 VNĐ/ người (bao gồm nước uống).</p>
+            <p><b>Giá vé gửi xe:</b> 10.000đ/xe</p>
+            <p>Ngoài ra, chúng ta có thể thuê những bộ trang phục quần áo của người bản địa để chụp những bức hình làm kỉ niệm</p>
+            <img src="https://dulichvn.net/wp-content/uploads/2021/08/ban-tay-vang-e1630420565438.jpg">
+            <h3 style="color:goldenrod">Giá vé thuê quần áo</h3>
+            <p><b>Giá thuê ngày:</b> 800.000đ/ngày</p>
+            <p><b>Giá thuê theo giờ:</b> 50.000đ/giờ</p>
+          </div>
+        </section>
+        </div>
+        <section class="travel-inspiration">
+          <h2>Cảm hứng du lịch tại Sa Pa</h2>
+          <div class="post-list">
+            <div class="post-item">
+             <a href="trang 1.html" target="_blank">
+            <img src="https://i.pinimg.com/736x/e2/00/97/e20097998f9dade5797d433cf81e2eca.jpg" alt="Tả Phìn">
+          </a>
+              <h4>Khám phá bản Tả Phìn Lào Cai - Địa điểm du lịch đậm chất Tây Bắc</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 2.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2022/09/dac-san-sapa-4.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Đặc sản Sapa">
+              </a>
+              <h4>Top 9 đặc sản Sapa bạn nhất định phải thử</h4>
+              <p class="author">Thao Nguyen</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 3.html" target="_blank">
+              <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/ruong-bac-thang-sa-pa-duoc-vinh-du-cong-nhan-danh-lam-thang-canh.jpg" alt="Ruộng bậc thang">
+              </a>
+              <h4>Khám phá Lao Chải - Bản làng xin đẹp giữa đồi núi Sapa</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 4.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2023/08/cong-troi-sapa-7.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Cổng trời">
+              </a>
+              <h4>Trải nghiệm du lịch Cổng trời Sapa từ A đến Z </h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+          </div>
+        </section>
+</body>
+</html>
