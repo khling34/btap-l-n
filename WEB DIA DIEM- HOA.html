@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thung lũng hoa Thải Giàng Phố</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Cascadia Mono;
+      background: url('https://cdn.baolaocai.vn/images/463974ce6d97d8cb8df387bbe715721ba5fd318a3f08cb7256b939dda967bdb5dc3b8ba9ac9868161c70a37b3896da0d7bcb82c544a63ff050980e54cbf7370e9983df55b89124867f15905571d5b7c8/1-9966.jpg.webp') no-repeat center center fixed;
+  background-size: cover;
+    }
+  
+    header h1{
+      font-size: 6em;
+      color:  rgba(255, 255, 255, 0.9);
+      margin-bottom: auto;
+      margin-left: 30px;
+    }
+    header h2{
+      font-size: 3em;
+      color:   rgba(255, 255, 255, 0.9);
+      margin-left: 30px;
+    }
+    .white-box {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .flag {
+      width: 30px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      -webkit-backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-weather {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px;
+      }
+    } 
+    .intro-section {
+        background-color: rgba(255, 255, 255, 0.688);
+        padding: 50px;
+        font-family: Cascadia Mono
+    }
+    .intro-content {
+        display: flex;
+        align-items: center;
+        font-weight:lighter;
+        gap: 60px;
+    }
+    .intro-image img {
+        width: 170px;
+        height: 170px;
+        border: 0.5px solid #335599;
+        border-radius: 50%;
+        padding: 10px;
+        background-color: white;
+    }
+    .intro-text p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #000;
+        font-weight: 300;
+    }
+    .content-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: black;
+        display: inline-block;
+        margin: 10px;
+        padding: 40px;
+    }
+    .content-image{
+      width: 200px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+    .full-image-section {
+      width: 100%;
+      padding: 40px 0;
+      background-color:rgba(255, 255, 255, 0.688) ;
+      display: flex;
+      justify-content: center;
+    }
+
+    .full-width-image {
+      width: 90%;
+      max-width: 1000px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .travel-inspiration {
+      padding: 40px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .travel-inspiration h2 {
+      font-size: 28px;
+      font-family: 'Georgia', serif;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .post-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .post-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .post-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .post-list {
+      display: flex;
+      flex-wrap: nowrap; 
+      justify-content: center;
+      gap: 20px;
+      overflow-x: auto; 
+      padding: 0 20px;
+    }
+
+    .post-item {
+      flex: 0 0 220px;
+      text-align: left;
+    }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="top-bar">
+    <div class="logo">
+      
+    <h1><b>TÂY BẮC TOUR</b></h1>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+  <nav>
+    <a href="#"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+  <header>t6y7
+    <h1>Thung lũng hoa Thải Giàng Phố</h1>
+    <h2>xã Thải Giàng Phố, huyện Bắc Hà, tỉnh Lào Cai</h2>
+  </header>
+  <div class="white-box">
+  <section class="intro-section">
+    <h2 class="section-title">Giới Thiệu Chung</h2>
+    <div class="intro-content">
+      <div class="intro-image">
+        <img src="https://suckhoeviet.org.vn/stores/news_dataimages/2024/032024/18/16/t5t5t5t5t5t520240318162241.jpg?rt=20240318162835" alt="Logo Lào Cai">
+      </div>
+      <div class="intro-text">
+        <p>Hoa Thải Giàng Phố mùa nào cũng nở, đến đây, du khách sẽ có cơ hội được thư giãn trong bầu không khí trong lành của những bản làng người Mông với những nương ngô và lúa xanh mướt. Đặc biệt là không gian yên tĩnh của làng quê, giúp du khách có thời gian thư giãn, nghỉ ngơi thoải mái hơn. Thật tuyệt vời khi được đắm mình trong những khu vườn rực rỡ sắc màu. Những thảm hoa đỏ, hồng, vàng khiến ai đến đây cũng vô cùng thích thú. Hãy cùng theo chân Vietgoing khám phá nét đẹp nơi đây nhé!</p>
+        <p><b>Vị trí:</b> Thải Giàng Phố, Huyện Bắc Hà, Lào Cai </p>
+      </div>
+      </div>
+      <h2 class="section-title">Một Vài Nét</h2>
+        <div class="intro-text">
+            <p>Thung lũng hoa Bắc Hà hay còn gọi là Thung Lũng Hoa Thải Giàng Phố do công ty TNHH MTV Kinh doanh XNK Việt Tú đầu tư và xây dựng. Hiện nay, thung lũng hoa đang mở rộng thêm một khu nhà sàn để đón khách nghỉ lại qua đêm. Các công trình phụ trợ đang dần được hoàn thiện nhưng với phong cảnh hấp dẫn, sự phục vụ nhiệt tình chu đáo nên rất nhiều du khách vẫn lựa chọn nơi đây để nghỉ dưỡng. 
+
+ .</p></div> </section>
+        <div class="full-image-section">
+            <img src="https://ngaymoionline.com.vn/stores/news_dataimages/phuongmanhtp/112022/29/09/in_article/1048_blog-hoa-oai-huong-bac-ha-lao-cai-dep-qua-1608720097.jpg?rt=20221129091051">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Khám Phá Thung lũng hoa</h2>
+          <div class="intro-text">
+            <p>Đến với thung lũng hoa du khách có cơ hội được thả mình trong không khí trong lành của bản làng H’mông với nương ngô, nương lúa xanh ngút ngàn. Đặc biệt không gian tĩnh mịch của bản làng sẽ giúp cho du khách có thời gian thư giãn, nghỉ ngơi được thoải mái hơn. Đến với thung lũng hoa du khách còn được đắm chìm trong vườn hoa đầy màu sắc. Những thảm hoa màu đỏ, hồng, vàng trải dài khiến cho bất kì ai đến đây đều cảm thấy vô cùng thích thú.
+            Không chỉ được ngắm hoa, hòa mình vào với không gian yên bình mà du khách còn được thưởng thức các món ăn đặc biệt. Bên cạnh các món ăn dân dã, mang màu sắc đặc trưng của địa phương như thắng cố, gà đen, lợn cắp nách, xôi màu….còn có những món ăn mới mang hương vị riêng.
+            </p></div></section>
+          <div class="full-image-section">
+            <img src="https://media.gody.vn//images/lao-cai/nha-tho-sapa/10-2016/20161020033948-nha-tho-sapa-gody(9).jpg">
+        </div>
+
+
+    
+          <h2 class="section-title">Một vài kinh nghiệm</h2>
+          <div class="intro-text">
+            <p>Đến với thung lũng Thải Giàng Phố, bạn không chỉ được ngắm vẻ đẹp bình yên, không khí trong lành của vùng cao nguyên trắng Bắc Hà mà còn được đón tiếp nồng hậu bởi sự hiếu khách của người dân làm cho du khách về cũng lưu luyến.</p>
+            <p>- <b>Di chuyển từ Hà Nội đến Bắc Hà</b>Từ thủ đô đến đến được thung lũng hoa Hà Bắc bạn cần đi qua 2 tuyến xe, cách Lào Cai khoảng 70km theo hướng từ Lào Cai về Hà Nội và từ Lào Cai để đến Bắc Hà mất khoảng 230km.
+
+ </p>
+            <p>- <b> Thời điểm lý tưởng để đến du lịch </b>Mùa thu ở Thung Lũng Hoa Thải Giàng Phố là thời điểm các loài hoa đua nhau khoe sắc, nổi bật nhất là thảm hoa oải hương (lavender) với sắc tím trải dài đến ngút ngàn, hút hồn đến ngây dại, hoà vào biển tím của oải hương là sắc mầu rực rỡ của cúc tám tầng, hoa cánh bướm, cúc indo, hoa hồng, hoa đồng tiền…tạo nên một bức tranh đa sắc màu đẹp đến ngỡ ngàng làm say đắm trái tim của biết bao người yêu hoa. Sự yên tĩnh của thung lũng hoa và không khí trong lành của núi rừng quả thực đã tạo ra một khoảng trời vô cùng yên bình để ta nghỉ ngơi và thư giãn sau những ngày làm việc căng thẳng..</p>
+          </div>
+        </section>
+        <div class="https://image.vietgoing.com/editor/image_tbp1668764331.jpg" alt="anh" class="full-width-image">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Chi Phí</h2>
+          <div class="intro-text">
+            <h3 style="color:goldenrod">Khách Sạn </h3>
+            <p><b>Khách Sạn</b>Dịch vụ nghỉ dưỡng với khu nhà sàn truyền thống đặc trưng của người Tày (150.000VNĐ/người) và ngủ lều trúc (300.000VNĐ/đêm, có thể ngủ đc 2 -3 người) ngay tại vườn với không gian mộc mạc mà kín đáo. </p>
+
+            <img src="https://image.vietgoing.com/destination/large/vietgoing_dyk2404151479.webp">
+           
+          </div>
+        </section>
+        </div>
+        <section class="travel-inspiration">
+          <h2>Cảm hứng du lịch tại Sa Pa</h2>
+          <div class="post-list">
+            <div class="post-item">
+             <a href="trang 1.html" target="_blank">
+            <img src="https://i.pinimg.com/736x/e2/00/97/e20097998f9dade5797d433cf81e2eca.jpg" alt="Tả Phìn">
+          </a>
+              <h4>Khám phá bản Tả Phìn Lào Cai - Địa điểm du lịch đậm chất Tây Bắc</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 2.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2022/09/dac-san-sapa-4.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Đặc sản Sapa">
+              </a>
+              <h4>Top 9 đặc sản Sapa bạn nhất định phải thử</h4>
+              <p class="author">Thao Nguyen</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 3.html" target="_blank">
+              <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/ruong-bac-thang-sa-pa-duoc-vinh-du-cong-nhan-danh-lam-thang-canh.jpg" alt="Ruộng bậc thang">
+              </a>
+              <h4>Khám phá Lao Chải - Bản làng xin đẹp giữa đồi núi Sapa</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 4.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2023/08/cong-troi-sapa-7.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Cổng trời">
+              </a>
+              <h4>Trải nghiệm du lịch Cổng trời Sapa từ A đến Z </h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+          </div>
+        </section>
+</body>
+</html>
+
+

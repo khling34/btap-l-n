@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bach Moc Luong Tu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Cascadia Mono;
+      background: url('https://travelup.vn/wp-content/uploads/2022/06/bach-moc-luong-tu-9.jpg') no-repeat center center fixed;
+  background-size: cover;
+    }
+  
+    header h1{
+      font-size: 6em;
+      color:  rgba(255, 255, 255, 0.9);
+      margin-bottom: auto;
+      margin-left: 30px;
+    }
+    header h2{
+      font-size: 3em;
+      color:   rgba(255, 255, 255, 0.9);
+      margin-left: 30px;
+    }
+    .white-box {
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .flag {
+      width: 30px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      -webkit-backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .search-weather {
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+      }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        width: 100%;
+        padding: 10px;
+      }
+    } 
+    .intro-section {
+        background-color: rgba(255, 255, 255, 0.688);
+        padding: 50px;
+        font-family: Cascadia Mono
+    }
+    .intro-content {
+        display: flex;
+        align-items: center;
+        font-weight:lighter;
+        gap: 60px;
+    }
+    .intro-image img {
+        width: 170px;
+        height: 170px;
+        border: 0.5px solid #335599;
+        border-radius: 50%;
+        padding: 10px;
+        background-color: white;
+    }
+    .intro-text p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #000;
+        font-weight: 300;
+    }
+    .content-title {
+        font-size: 36px;
+        font-weight: bold;
+        color: black;
+        display: inline-block;
+        margin: 10px;
+        padding: 40px;
+    }
+    .content-image{
+      width: 200px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #2c3e50;
+    }
+    .full-image-section {
+      width: 100%;
+      padding: 40px 0;
+      background-color:rgba(255, 255, 255, 0.688) ;
+      display: flex;
+      justify-content: center;
+    }
+
+    .full-width-image {
+      width: 90%;
+      max-width: 1000px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .travel-inspiration {
+      padding: 40px 20px;
+      background-color: #fff;
+      text-align: center;
+    }
+
+    .travel-inspiration h2 {
+      font-size: 28px;
+      font-family: 'Georgia', serif;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .post-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .post-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .post-item img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .post-list {
+      display: flex;
+      flex-wrap: nowrap; 
+      justify-content: center;
+      gap: 20px;
+      overflow-x: auto; 
+      padding: 0 20px;
+    }
+
+    .post-item {
+      flex: 0 0 220px;
+      text-align: left;
+    }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="top-bar">
+    <div class="logo">
+      
+    <h1><b>TÂY BẮC TOUR</b></h1>
+    </div>
+    <div class="search">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Tìm kiếm...">
+      </div>
+      <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+    </div>
+  </div>
+  <nav>
+    <a href="#"><i class="fas fa-home"></i>Trang Chủ</a>
+    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
+    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+  </nav>
+  <header>t6y7
+    <h1>Bạch Mộc Lương Tử</h1>
+    <h2>Bình minh trên mây</h2>
+  </header>
+  <div class="white-box">
+  <section class="intro-section">
+    <h2 class="section-title">Giới Thiệu Chung</h2>
+    <div class="intro-content">
+      <div class="intro-image">
+        <img src="https://viettrekking.vn/wp-content/uploads/2019/12/26678614_853755781470308_3703665083361072317_o.jpg" alt="Logo Lào Cai">
+      </div>
+      <div class="intro-text">
+        <p>Khi bạn nói: Tôi thích leo núi hoặc tôi bắt đầu đi trek thì Mit dám chắc đến 90% là bạn sẽ nhận được câu hỏi từ các trekker: Bạn đã leo Bạch Mộc Lương Tử chưa? Đây là đỉnh núi được biết đến, nghe nói đến hàng đầu trong các dãy núi Tây Bắc bởi độ đẹp, hùng vĩ, đa dạng của núi non, địa hình và đặc biệt là “trang thiết bị, cơ sở vật chất” ở đây được trang bị đầy đủ và “hiện đại” nhất so với các đỉnh núi khác, cũng chính vì thế mà đỉnh núi này khá phổ biến trong làng trekking.</p>
+        <p><b>Vị trí:</b> là dãy núi nằm ở giữa hai xã Sin Suối Hồ (Phong Thổ, Lai Châu) và Sàng Ma Sáo (Bát Xát, Lào Cai) </p>
+      </div>
+      </div>
+      <h2 class="section-title">Một Vài Nét</h2>
+        <div class="intro-text">
+            <p> Bạch Mộc Lương Tử hay còn gọi là KỲ QUAN SAN - là dãy núi nằm ở giữa hai xã Sin Suối Hồ (Phong Thổ, Lai Châu) và Sàng Ma Sáo (Bát Xát, Lào Cai), với độ cao 3.046m, thuộc Top 4 ngọn núi cao nhất Việt Nam và Top 3 độ khó chinh phục. Rất nhiều người nhầm khi nghe tên Bạch Mộc Lương Tử với Bạch Mộc Lương ở phía bên Trung Quốc, thực chất, Bạch Mộc Lương Tử chỉ là cái tên do các trekker tự đặt, tên gốc của núi này là Kỳ Quan San..</p></div> </section>
+        <div class="full-image-section">
+            <img src="https://laichau.gov.vn/upload/2000066/20241030/grabfd2c1_E1_BA_A2nh_20b_C3_ACa.jpg">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Khám Phá Bạch Mộc Lương Tử</h2>
+          <div class="intro-text">
+            <p>Có hai đường đi lên đỉnh núi, một là từ Phong Thổ - Lai Châu, hai là từ Bát Xát – Lào Cai. Nhóm Mit đã xuất phát từ điểm Bát Xát, Lào Cai. Hành trình của tuyến đường này dài, xa hơn, địa hình nhiều vách đá và sống núi nên có phần hiểm trở hơn nhưng lại không có nhiều rừng rậm nguyên sinh như tuyến đường phía Lai Châu.
+            .Thời điểm lý tưởng leo núi Bạch Mộc Lương Tử là vào đầu đông kéo dài đến mùa xuân, tức là từ tháng 9 đến tháng 3. Tuy nhiên, tháng 12 đến tháng 1 là thời điểm khá lạnh, các bạn cần lưu ý chuẩn bị đồ ấm đầy đủ, tránh mất nhiệt. Thường vào mùa hè hầu như các cung trek, leo núi sẽ đóng cửa bởi nắng nóng, dễ mất sức và cũng là thời điểm có nhiều rắn, không đảm bảo an toàn cho trekker.
+            </p></div></section>
+          <div class="full-image-section">
+            <img src="https://vietrektravel.com/ckeditor/plugins/fileman/Uploads/Images/bach-moc-luong-tu-1.jpg">
+        </div>
+
+
+    
+          <h2 class="section-title">Một vài kinh nghiệm</h2>
+          <div class="intro-text">
+            <p>Theo kinh nghiệm của những trekker đã từng  trekking Bạch Mộc Lương tử thì có 2 cung đường chính với những đặc điểm địa hình và mức độ nguy hiểm khác nhau. Tùy theo thể lực và sở thích để bạn có thể lựa chọn: .</p>
+            <p>- <b>Cung đường từ Lai Châu</b>Tại đây, bạn xuất phát từ bản Dền Sung, xã Sin Suối Hồ, huyện Phong Thổ, tỉnh Lai Châu. Với  ưu điểm ngắn hơn, cây cối đa dạng nên bạn sẽ có cơ hội chinh phục nhiều loại địa hình khác nhau. Tuy nhiên, cung đường này được đánh giá là di chuyển khá nhiều dốc và phải có sự cho phép của Bộ chỉ huy bộ đội biên phòng tỉnh Lai Châu mới có thể thực hiện hành trình. 
+
+ </p>
+            <p>- <b>Cung đường từ Lào Cai:</b>Có thể xuất phát từ bản Ky Quan San, xã Sàng Ma Sáo, huyện Bát Xát tỉnh Lào Cai. Cung đường này tốn nhiều thời gian hơn vì khá dài nhưng ít dốc, dễ đi và không cần phải xin phép Bộ đội biên phòng địa phương..</p>
+          </div>
+        </section>
+        <div class="https://vietrektravel.com/ckeditor/plugins/fileman/Uploads/Images/bach-moc-luong-tu.jpeg" alt="anh" class="full-width-image">
+        </div>
+        <section class="intro-section">
+          <h2 class="section-title">Chi Phí</h2>
+          <div class="intro-text">
+            <h3 style="color:goldenrod">Khách Sạn </h3>
+            <p><b>Khách Sạn</b>Có dịch vụ cho thuê lán khá tươm tất và sạch sẽ để nghỉ lại. Nếu muốn tiết kiệm chi phí bạn có thể mang theo túi ngủ cá nhân của mình. </p>
+
+            <img src="https://vietrektravel.com/ckeditor/plugins/fileman/Uploads/Images/%C4%90i%20trekking%20%C4%91%E1%BB%ABng%20qu%C3%AAn%20chu%E1%BA%A9n%20b%E1%BB%8B%20d%E1%BB%A5ng%20c%E1%BB%A5%20y%20t%E1%BA%BF.jpg">
+           
+          </div>
+        </section>
+        </div>
+        <section class="travel-inspiration">
+          <h2>Cảm hứng du lịch tại Sa Pa</h2>
+          <div class="post-list">
+            <div class="post-item">
+             <a href="trang 1.html" target="_blank">
+            <img src="https://i.pinimg.com/736x/e2/00/97/e20097998f9dade5797d433cf81e2eca.jpg" alt="Tả Phìn">
+          </a>
+              <h4>Khám phá bản Tả Phìn Lào Cai - Địa điểm du lịch đậm chất Tây Bắc</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 2.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2022/09/dac-san-sapa-4.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Đặc sản Sapa">
+              </a>
+              <h4>Top 9 đặc sản Sapa bạn nhất định phải thử</h4>
+              <p class="author">Thao Nguyen</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 3.html" target="_blank">
+              <img src="https://fansipanlegend.sunworld.vn/wp-content/uploads/2024/04/ruong-bac-thang-sa-pa-duoc-vinh-du-cong-nhan-danh-lam-thang-canh.jpg" alt="Ruộng bậc thang">
+              </a>
+              <h4>Khám phá Lao Chải - Bản làng xin đẹp giữa đồi núi Sapa</h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+            <div class="post-item">
+            <a href="trang 4.html" target="_blank">
+              <img src="https://ik.imagekit.io/tvlk/blog/2023/08/cong-troi-sapa-7.jpg?tr=q-70,c-at_max,w-500,h-250,dpr-2" alt="Cổng trời">
+              </a>
+              <h4>Trải nghiệm du lịch Cổng trời Sapa từ A đến Z </h4>
+              <p class="author">Nguyễn Thụy Mộc Nhiên</p>
+            </div>
+          </div>
+        </section>
+</body>
+</html>
+
+
