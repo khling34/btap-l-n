@@ -112,22 +112,41 @@
 .footer-brand {
   font-weight: bold;
   font-size:24px;
-  color:#2c3e50 ;
+  color:#1ABC9C ;
 }
 
 .footer-copy {
   font-size: 14px;
   color: #777;
 }
-
+.phone-box {
+      display: flex;
+    }
+.phone-box input {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #fff;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      background: #eee;
+    }
+.phone-box button {
+      padding: 10px 15px;
+      font-size: 18px;
+      border: 2px solid #fff;
+      border-left: none;
+      border-radius: 0 5px 5px 0;
+      background: #eee;
+      cursor: pointer;
+    }
 </style>
 </head>
 <body>
 <footer class="footer">
   <div class="footer-top">
-    <div class="footer-newsletter">
-      <input type="email" placeholder="Nhập số điện thoại" />
-      <button>➜</button>
+    <div class="phone-box">
+    <input type="text" id="phoneInput" placeholder="Nhập số điện thoại">
+    <button onclick="submitPhone()">→</button>
     </div>
     <div class="footer-links">
       <a href="#">Giới thiệu</a>
@@ -153,5 +172,32 @@
     <div class="footer-copy">© 2025. by wanggganhh</div>
   </div>
 </footer>
+<script>
+  function submitPhone() {
+  const phone = document.getElementById("phoneInput").value.trim();
+
+  // Kiểm tra trống
+  if (phone === "") {
+    alert("Vui lòng nhập số điện thoại trước khi gửi.");
+    return;
+  }
+
+  // Kiểm tra chỉ chứa số
+  if (!/^\d+$/.test(phone)) {
+    alert("Số điện thoại chỉ được chứa các chữ số.");
+    return;
+  }
+
+  // Kiểm tra độ dài hợp lệ (9-11 số)
+  if (phone.length < 9 || phone.length > 11) {
+    alert("Số điện thoại phải từ 9 đến 11 chữ số.");
+    return;
+  }
+
+  // Nếu hợp lệ
+  alert("Cảm ơn bạn đã để lại thông tin! Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất.");
+  document.getElementById("phoneInput").value = "";
+}
+</script>
 </body>
 </html>
