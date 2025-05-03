@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanh Toán | Tây Bắc Tour</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .step {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    .step div {
+      text-align: center;
+    }
+    .step .active {
+      color: green;
+      font-weight: bold;
+    }
+    .hidden {
+      display: none;
+    }
+    .summary, .form-group {
+      margin-bottom: 20px;
+    }
+    .summary h3 {
+      margin-top: 0;
+    }
+    .total {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-top: 10px;
+      color:brown;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      font-size: 1em;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="step">
+      <div id="step1Indicator" class="active">1<br>Xác Thực</div>
+      <div id="step2Indicator">2<br>Hành Khách</div>
+      <div id="step3Indicator">3<br>Thanh Toán</div>
+    </div>
+
+    <!-- Bước 1: Xác Thực Chuyến Đi -->
+    <div id="step1">
+      <div class="summary">
+        <h3>Thông tin chuyến đi</h3>
+        <div id="routeInfo">Đang tải...</div>
+        
+        <div class="form-group">
+            <label for="travelDate">Ngày đi</label>
+            <input type="date" id="travelDate">
+            <div id="dateError" style="color: red; font-size: 0.9em; margin-top: 5px;"></div> <!-- cảnh báo -->
+          </div>
+                 
+        <div class="form-group">
+            <label for="quantity">Số lượng hành khách</label>
+            <input type="number" id="quantity" min="1" value="1" onchange="updateTotal()">
+          </div> 
+        <div class="total" id="totalPrice"></div>         
+      </div>
+      <button onclick="checkAndGoToStep2()">Tiếp tục</button>
+    </div>
+
+    <!-- Bước 2: Thông Tin Hành Khách -->
+    <div id="step2" class="hidden">
+      <div id="passengerList"></div>
+      <button onclick="nextStep(1)">Quay lại</button>
+      <button onclick="validatePassengerInfo()">Tiếp tục</button>
+    </div>
+
+    <!-- Bước 3: Thanh Toán -->
+    <div id="step3" class="hidden">
+      <div class="form-group">
+        <label for="card">Số Thẻ</label>
+        <input type="text" id="card" placeholder="Nhập số thẻ..." />
+      </div>
+      <div class="form-group">
+        <label for="bank">Ngân Hàng</label>
+        <input type="text" id="bank" placeholder="Nhập tên ngân hàng..." />
+      </div>
+      <button onclick="nextStep(2)">Quay lại</button>
+      <button onclick="pay()">Thanh toán</button>
+    </div>
+  </div>
+
+  <script>
+    const ticket = JSON.parse(localStorage.getItem('selectedTicket'));
+    const routeInfo = document.getElementById('routeInfo');
+    const totalPrice = document.getElementById('totalPrice');
+
+    if (ticket) {
+  routeInfo.innerHTML = `
+    <strong>Tuyến:</strong> ${ticket.route} <br>
+    <strong>Thời gian:</strong> ${ticket.time} <br>
+    <strong>Giá vé:</strong> ${ticket.price.toLocaleString()} đ / hành khách
+  `;
+  updateTotal();
+}
+
+function updateTotal() {
+  const quantity = parseInt(document.getElementById('quantity').value) || 1;
+  const total = ticket.price * quantity;
+  totalPrice.textContent = `Tổng cộng: ${total.toLocaleString()} đ`;
+  ticket.quantity = quantity;
+  localStorage.setItem('selectedTicket', JSON.stringify(ticket)); // Cập nhật lại localStorage
+}
+function nextStep(step) {
+  for (let i = 1; i <= 3; i++) {
+    document.getElementById(`step${i}`).classList.add('hidden');
+    document.getElementById(`step${i}Indicator`).classList.remove('active');
+  }
+
+  document.getElementById(`step${step}`).classList.remove('hidden');
+  document.getElementById(`step${step}Indicator`).classList.add('active');
+
+  // ✅ Khi chuyển sang bước 2 → luôn tạo lại ô nhập
+  if (step === 2) {
+    generatePassengerFields(ticket.quantity || 1);
+  }
+}
+    function validatePassengerInfo() {
+    const quantity = ticket.quantity || 1;
+    let valid = true;
+    let passengers = [];
+
+    for (let i = 1; i <= quantity; i++) {
+        const name = document.getElementById(`name${i}`).value.trim();
+        const phone = document.getElementById(`phone${i}`).value.trim();
+
+        if (!name || !phone) {
+        alert(`Vui lòng nhập đầy đủ họ tên và số điện thoại cho hành khách ${i}.`);
+        valid = false;
+        break;
+        }
+
+        passengers.push({ name, phone });
+    }
+
+    if (valid) {
+        // Có thể lưu danh sách hành khách nếu cần
+        ticket.passengers = passengers;
+        localStorage.setItem('selectedTicket', JSON.stringify(ticket));
+        nextStep(3); // Chuyển sang bước thanh toán
+    }
+    }
+    function pay() {
+  const card = document.getElementById('card').value.trim();
+  const bank = document.getElementById('bank').value.trim();
+  const ticket = JSON.parse(localStorage.getItem('selectedTicket')) || {};
+
+  if (!card || !bank) {
+    alert("Vui lòng điền đầy đủ thông tin thanh toán.");
+    return;
+  }
+
+  // Tạo mã đặt chỗ và lưu vào lịch sử
+  const lichSu = JSON.parse(localStorage.getItem('lichSuDatCho')) || [];
+  const maDatCho = 'XE' + Math.floor(100000 + Math.random() * 900000);
+
+  lichSu.push({
+    maDatCho,
+    loai: 'car',
+    name: car.name,
+    date: car.date,
+    days: car.days,
+    guest: car.guest
+  });
+
+  localStorage.setItem('lichSuDatCho', JSON.stringify(lichSu));
+  alert("✅ Thanh toán thành công! Mã đặt chỗ của bạn là: " + maDatCho);
+
+  window.location.href = "index.html";
+}
+  </script>
+  <script>
+  function generatePassengerFields(quantity) {
+    const container = document.getElementById('passengerList');
+    container.innerHTML = ''; // Xóa cũ
+  
+    for (let i = 1; i <= quantity; i++) {
+      const group = document.createElement('div');
+      group.className = 'form-group';
+      group.innerHTML = `
+        <label for="name${i}">Họ và tên hành khách ${i}</label>
+        <input type="text" id="name${i}" placeholder="Nhập họ tên...">
+        <label for="phone${i}">Số điện thoại</label>
+        <input type="text" id="phone${i}" placeholder="Nhập số điện thoại...">
+      `;
+      container.appendChild(group);
+    }
+  }
+  function updateTotal() {
+  const quantity = parseInt(document.getElementById('quantity').value) || 1;
+  const total = ticket.price * quantity;
+  totalPrice.textContent = `Tổng cộng: ${total.toLocaleString()} đ`;
+  ticket.quantity = quantity;
+  localStorage.setItem('selectedTicket', JSON.stringify(ticket));
+  generatePassengerFields(quantity); // 👈 Thêm dòng này
+}
+  </script>
+<script>
+function checkAndGoToStep2() {
+    const dateInput = document.getElementById('travelDate');
+    const errorBox = document.getElementById('dateError');
+    const date = dateInput.value;
+  
+    if (!date) {
+      errorBox.textContent = " Vui lòng chọn ngày đi.";
+      dateInput.focus();
+      return;
+    }
+  
+    // Xóa cảnh báo nếu hợp lệ
+    errorBox.textContent = "";
+  
+    ticket.date = date;
+    localStorage.setItem('selectedTicket', JSON.stringify(ticket));
+    nextStep(2);
+  }
+</script>
+  
+</body>
+</html>

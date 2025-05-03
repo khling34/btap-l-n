@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thanh Toán Khách Sạn | Tây Bắc Tour</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #f1f1f1;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .step {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    .step div {
+      text-align: center;
+    }
+    .step .active {
+      color: green;
+      font-weight: bold;
+    }
+    .hidden {
+      display: none;
+    }
+    .summary, .form-group {
+      margin-bottom: 20px;
+    }
+    .summary h3 {
+      margin-top: 0;
+    }
+    .total {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-top: 10px;
+      color:brown;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      font-size: 1em;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1.1em;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="step">
+      <div id="step1Indicator" class="active">1<br>Chi Tiết</div>
+      <div id="step2Indicator">2<br>Khách Lưu Trú</div>
+      <div id="step3Indicator">3<br>Thanh Toán</div>
+    </div>
+
+    <!-- Bước 1: Xác nhận khách sạn -->
+    <div id="step1">
+      <div class="summary">
+        <h3>Thông tin khách sạn</h3>
+        <div id="hotelInfo">Đang tải...</div>
+        
+        <div class="form-group">
+          <label for="checkIn">Ngày nhận phòng</label>
+          <input type="date" id="checkIn">
+          <div id="dateError" style="color: red; font-size: 0.9em; margin-top: 5px;"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="quantity">Số đêm lưu trú</label>
+          <input type="number" id="quantity" min="1" value="1" onchange="updateTotal()">
+        </div>
+
+        <div class="total" id="totalPrice"></div>
+      </div>
+      <button onclick="checkAndGoToStep2()">Tiếp tục</button>
+    </div>
+
+    <!-- Bước 2: Thông tin khách -->
+    <div id="step2" class="hidden">
+      <div class="form-group">
+        <label for="guestName">Họ và tên khách</label>
+        <input type="text" id="guestName" placeholder="Nhập họ tên...">
+        <label for="guestPhone">Số điện thoại</label>
+        <input type="text" id="guestPhone" placeholder="Nhập số điện thoại...">
+      </div>
+      <button onclick="nextStep(1)">Quay lại</button>
+      <button onclick="validateGuest()">Tiếp tục</button>
+    </div>
+
+    <!-- Bước 3: Thanh toán -->
+    <div id="step3" class="hidden">
+      <div class="form-group">
+        <label for="card">Số Thẻ</label>
+        <input type="text" id="card" placeholder="Nhập số thẻ..." />
+      </div>
+      <div class="form-group">
+        <label for="bank">Ngân Hàng</label>
+        <input type="text" id="bank" placeholder="Nhập tên ngân hàng..." />
+      </div>
+      <button onclick="nextStep(2)">Quay lại</button>
+      <button onclick="pay()">Thanh toán</button>
+    </div>
+  </div>
+
+  <script>
+    const hotel = JSON.parse(localStorage.getItem('selectedHotel'));
+    const hotelInfo = document.getElementById('hotelInfo');
+    const totalPrice = document.getElementById('totalPrice');
+
+    if (hotel) {
+      hotelInfo.innerHTML = `
+        <strong>Tên khách sạn:</strong> ${hotel.name}<br>
+        <strong>Loại phòng:</strong> ${hotel.roomType}<br>
+        <strong>Giá:</strong> ${hotel.price.toLocaleString()} đ / đêm
+      `;
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const nights = parseInt(document.getElementById('quantity').value) || 1;
+      const total = hotel.price * nights;
+      totalPrice.textContent = `Tổng cộng: ${total.toLocaleString()} đ`;
+      hotel.nights = nights;
+      localStorage.setItem('selectedHotel', JSON.stringify(hotel));
+    }
+
+    function checkAndGoToStep2() {
+      const dateInput = document.getElementById('checkIn');
+      const errorBox = document.getElementById('dateError');
+      const date = dateInput.value;
+
+      if (!date) {
+        errorBox.textContent = "Vui lòng chọn ngày nhận phòng.";
+        dateInput.focus();
+        return;
+      }
+
+      errorBox.textContent = "";
+      hotel.date = date;
+      localStorage.setItem('selectedHotel', JSON.stringify(hotel));
+      nextStep(2);
+    }
+
+    function nextStep(step) {
+      for (let i = 1; i <= 3; i++) {
+        document.getElementById(`step${i}`).classList.add('hidden');
+        document.getElementById(`step${i}Indicator`).classList.remove('active');
+      }
+      document.getElementById(`step${step}`).classList.remove('hidden');
+      document.getElementById(`step${step}Indicator`).classList.add('active');
+    }
+
+    function validateGuest() {
+      const name = document.getElementById('guestName').value.trim();
+      const phone = document.getElementById('guestPhone').value.trim();
+
+      if (!name || !phone) {
+        alert("Vui lòng nhập đầy đủ họ tên và số điện thoại.");
+        return;
+      }
+
+      hotel.guest = { name, phone };
+      localStorage.setItem('selectedHotel', JSON.stringify(hotel));
+      nextStep(3);
+    }
+
+    function pay() {
+      const card = document.getElementById('card').value.trim();
+      const bank = document.getElementById('bank').value.trim();
+
+      if (!card || !bank) {
+        alert("Vui lòng điền đầy đủ thông tin thanh toán.");
+        return;
+      }
+
+      // Tạo mã đặt chỗ và lưu vào lịch sử
+      const lichSu = JSON.parse(localStorage.getItem('lichSuDatCho')) || [];
+      const maDatCho = 'KS' + Math.floor(100000 + Math.random() * 900000);
+
+      lichSu.push({
+        maDatCho,
+        loai: 'hotel',
+        name: hotel.name,
+        date: hotel.date,
+        nights: hotel.nights,
+        guest: hotel.guest
+      });
+
+      localStorage.setItem('lichSuDatCho', JSON.stringify(lichSu));
+      alert("✅ Thanh toán thành công! Mã đặt chỗ của bạn là: " + maDatCho);
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tra cứu mã đặt chỗ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .item {
+      margin-top: 20px;
+      padding: 15px;
+      border-left: 4px solid #4CAF50;
+      background: #fafafa;
+    }
+    .error {
+      color: red;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Tra cứu mã đặt chỗ</h2>
+    <input type="text" id="maDatCho" placeholder="Nhập mã đặt chỗ...">
+    <button onclick="traCuu()">Tra cứu</button>
+
+    <div id="ketQua"></div>
+  </div>
+
+  <script>
+    function traCuu() {
+      const ma = document.getElementById('maDatCho').value.trim();
+      const ketQua = document.getElementById('ketQua');
+      if (!ma) {
+        ketQua.innerHTML = '<p class="error">Vui lòng nhập mã đặt chỗ.</p>';
+        return;
+      }
+
+      const allBookings = JSON.parse(localStorage.getItem('lichSuDatCho')) || [];
+
+      const found = allBookings.find(item => item.maDatCho === ma);
+      if (!found) {
+        ketQua.innerHTML = `<p class="error">❌ Không tìm thấy mã "${ma}".</p>`;
+        return;
+      }
+
+      const loai = found.loai === 'hotel' ? 'Đặt phòng' : 'Đặt xe';
+      const html = `
+        <div class="item">
+          <strong>Loại giao dịch:</strong> ${loai}<br>
+          <strong>Tên:</strong> ${found.name}<br>
+          <strong>Ngày:</strong> ${found.date}<br>
+          <strong>Số ngày / đêm:</strong> ${found.days || found.nights}<br>
+          <strong>Khách:</strong> ${found.guest.name} (${found.guest.phone})<br>
+          <strong>Mã đặt chỗ:</strong> ${found.maDatCho}
+        </div>
+      `;
+      ketQua.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
