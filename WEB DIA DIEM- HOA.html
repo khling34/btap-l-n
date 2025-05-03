@@ -13,7 +13,7 @@
       margin: 0;
       font-family: Cascadia Mono;
       background: url('https://cdn.baolaocai.vn/images/463974ce6d97d8cb8df387bbe715721ba5fd318a3f08cb7256b939dda967bdb5dc3b8ba9ac9868161c70a37b3896da0d7bcb82c544a63ff050980e54cbf7370e9983df55b89124867f15905571d5b7c8/1-9966.jpg.webp') no-repeat center center fixed;
-  background-size: cover;
+       background-size: cover;
     }
   
     header h1{
@@ -102,25 +102,6 @@
     nav a:hover {
       background-color: #1abc9c;
     }
-    @media (max-width: 768px) {
-      .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .search-weather {
-        justify-content: space-between;
-        width: 100%;
-        margin-top: 10px;
-      }
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav a {
-        width: 100%;
-        padding: 10px;
-      }
-    } 
     .intro-section {
         background-color: rgba(255, 255, 255, 0.688);
         padding: 50px;
@@ -304,6 +285,12 @@
     width: 100%;
     height: auto;
   }
+    .full-image-section{
+    width: 100%;
+    height: auto;
+    align-items: center;
+    display: flex;
+  }
  }
 @media (min-width: 769px) {
       #menu-toggle {
@@ -383,19 +370,15 @@
           <div class="full-image-section">
             <img src="https://media.gody.vn//images/lao-cai/nha-tho-sapa/10-2016/20161020033948-nha-tho-sapa-gody(9).jpg">
         </div>
-
-
-    
-          <h2 class="section-title">Một vài kinh nghiệm</h2>
+        <h2 class="section-title">Một vài kinh nghiệm</h2>
           <div class="intro-text">
             <p>Đến với thung lũng Thải Giàng Phố, bạn không chỉ được ngắm vẻ đẹp bình yên, không khí trong lành của vùng cao nguyên trắng Bắc Hà mà còn được đón tiếp nồng hậu bởi sự hiếu khách của người dân làm cho du khách về cũng lưu luyến.</p>
-            <p>- <b>Di chuyển từ Hà Nội đến Bắc Hà</b>Từ thủ đô đến đến được thung lũng hoa Hà Bắc bạn cần đi qua 2 tuyến xe, cách Lào Cai khoảng 70km theo hướng từ Lào Cai về Hà Nội và từ Lào Cai để đến Bắc Hà mất khoảng 230km.
-
- </p>
+            <p>- <b>Di chuyển từ Hà Nội đến Bắc Hà</b>Từ thủ đô đến đến được thung lũng hoa Hà Bắc bạn cần đi qua 2 tuyến xe, cách Lào Cai khoảng 70km theo hướng từ Lào Cai về Hà Nội và từ Lào Cai để đến Bắc Hà mất khoảng 230km. </p>
             <p>- <b> Thời điểm lý tưởng để đến du lịch </b>Mùa thu ở Thung Lũng Hoa Thải Giàng Phố là thời điểm các loài hoa đua nhau khoe sắc, nổi bật nhất là thảm hoa oải hương (lavender) với sắc tím trải dài đến ngút ngàn, hút hồn đến ngây dại, hoà vào biển tím của oải hương là sắc mầu rực rỡ của cúc tám tầng, hoa cánh bướm, cúc indo, hoa hồng, hoa đồng tiền…tạo nên một bức tranh đa sắc màu đẹp đến ngỡ ngàng làm say đắm trái tim của biết bao người yêu hoa. Sự yên tĩnh của thung lũng hoa và không khí trong lành của núi rừng quả thực đã tạo ra một khoảng trời vô cùng yên bình để ta nghỉ ngơi và thư giãn sau những ngày làm việc căng thẳng..</p>
           </div>
         </section>
-        <div class="https://image.vietgoing.com/editor/image_tbp1668764331.jpg" alt="anh" class="full-width-image">
+     <div class="full-image-section">
+          <div class="https://image.vietgoing.com/editor/image_tbp1668764331.jpg" alt="anh">
         </div>
         <section class="intro-section">
           <h2 class="section-title">Chi Phí</h2>
@@ -405,8 +388,6 @@
             <div class="full-image-section"> 
               <img src="https://image.vietgoing.com/destination/large/vietgoing_dyk2404151479.webp">
             </div>
-           
-           
           </div>
         </section>
         </div>
