@@ -694,6 +694,131 @@
       #menu-toggle {
         display: none !important;
       }
+    
+  .footer {
+  background-color: #333;
+  padding: 40px 20px;
+  color: white;
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: #007bff;
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 20px;
+}
+
+.footer-newsletter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-newsletter input {
+  padding: 10px;
+  border: none;
+  background-color: #eee;
+  width: 200px;
+  border-radius: 4px 0 0 4px;
+}
+
+.footer-newsletter button {
+  padding: 10px 15px;
+  background-color: #eee;
+  border: none;
+  border-left: 1px solid #ccc;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer-social a {
+  margin: 0 5px;
+  color: #333;
+  font-size: 28px;
+  background-color: #f3f3f3;
+  padding: 10px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.footer-bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer-brand {
+  font-weight: bold;
+  font-size:24px;
+  color:#1ABC9C ;
+}
+
+.footer-copy {
+  font-size: 14px;
+  color: #777;
+}
+.phone-box {
+      display: flex;
+    }
+.phone-box input {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #fff;
+      border-radius: 5px 0 0 5px;
+      outline: none;
+      background: #eee;
+    }
+.phone-box button {
+      padding: 10px 15px;
+      font-size: 18px;
+      border: 2px solid #fff;
+      border-left: none;
+      border-radius: 0 5px 5px 0;
+      background: #eee;
+      cursor: pointer;
     }
 </style>
 </head>
@@ -1087,6 +1212,34 @@
   menuToggle.addEventListener("click", () => {
     nav.classList.toggle("active");
   });
+</script>
+
+<script>
+  function submitPhone() {
+  const phone = document.getElementById("phoneInput").value.trim();
+
+  // Kiểm tra trống
+  if (phone === "") {
+    alert("Vui lòng nhập số điện thoại trước khi gửi.");
+    return;
+  }
+
+  // Kiểm tra chỉ chứa số
+  if (!/^\d+$/.test(phone)) {
+    alert("Số điện thoại chỉ được chứa các chữ số.");
+    return;
+  }
+
+  // Kiểm tra độ dài hợp lệ (9-11 số)
+  if (phone.length < 9 || phone.length > 11) {
+    alert("Số điện thoại phải từ 9 đến 11 chữ số.");
+    return;
+  }
+
+  // Nếu hợp lệ
+  alert("Cảm ơn bạn đã để lại thông tin! Chúng tôi sẽ liên hệ lại với bạn trong thời gian sớm nhất.");
+  document.getElementById("phoneInput").value = "";
+}
 </script>
 </body>
 </html>
