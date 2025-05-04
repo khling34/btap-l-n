@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>Cau Kinh Rong MayMay</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cascadia+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="footermenu.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -23,73 +26,6 @@
         padding: 30px;
         border-radius: 10px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-    }
-    .top-bar {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.618);
-      padding: 10px 20px;
-    }
-    .logo {
-      display: flex;
-      align-items: center;
-    }
-    .logo img {
-      height: 40px;
-      margin-right: 10px;
-    }
-    .logo h1 {
-      font-size: 22px;
-      color: #2c3e50;
-      margin: 0;
-    }
-    .search {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .search-box {
-      display: flex;
-      align-items: center;
-      background: #f7f7f7;
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
-    .search-box input {
-      border: none;
-      background: transparent;
-      outline: none;
-    }
-    .flag {
-      width: 30px;
-    }
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      position: absolute;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.2); 
-      backdrop-filter: blur(4px); 
-      -webkit-backdrop-filter: blur(4px); 
-      z-index: 10;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 15px 20px;
-      display: flex;
-      align-items: center;
-      font-weight: bold;
-    }
-    nav a i {
-      margin-right: 8px;
-    }
-    nav a:hover {
-      background-color: #1abc9c;
     }
     @media (max-width: 768px) {
     /* HEADER & TOP BAR */
@@ -307,25 +243,25 @@
     <div class="search">
       <div class="search-box">
         <i class="fas fa-search"></i>
-        <input type="text" placeholder="Tìm kiếm...">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm...">
+        <div id="suggestions" class="suggestions"></div>
       </div>
       <div class="menu-wrapper">
       <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
-       <button id="menu-toggle"><i class="fas fa-bars"></i></button>
       </div>
     </div>
   </div>
   <nav>
     <a href="index.html"><i class="fas fa-home"></i>Trang Chủ</a>
-    <a href="#"><i class="fas fa-hotel"></i>Khách Sạn</a>
-    <a href="#"><i class="fas fa-plane"></i>Phương Tiện</a>
-    <a href="#"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
-    <a href="#"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
-    <a href="#"><i class="fas fa-utensils"></i>Ẩm Thực</a>
-    <a href="#"><i class="fas fa-credit-card"></i>Thanh Toán</a>
-    <a href="#"><i class="fas fa-headset"></i>Liên Hệ</a>
+    <a href="khachsan.html"><i class="fas fa-hotel"></i>Khách Sạn</a>
+    <a href="phuongtien.html"><i class="fas fa-plane"></i>Phương Tiện</a>
+    <a href="WEB DIA DIEM.html"><i class="fas fa-map-marker-alt"></i>Điểm Đến</a>
+    <a href="Cam nang du lich.html"><i class="fas fa-book"></i>Cẩm nang du lịch</a>
+    <a href="WEB AMTHUC.html" class="active"><i class="fas fa-utensils"></i>Ẩm Thực</a> 
+    <a href="thanh toán.html"><i class="fas fa-credit-card"></i>Thanh Toán</a>
+    <a href="lienhe.html"><i class="fas fa-headset"></i>Liên Hệ</a>
   </nav>
-  
+</div>
   <div class="white-box">
   <section class="intro-section">
     <h2 class="section-title">Cầu Kính Rồng Mây-Tuyệt tác kiến trúc giữa trời Sapa</h2> 
@@ -411,7 +347,37 @@
           </div>
         </div>
       </section>
-
+  </div>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="phone-box">
+    <input type="text" id="phoneInput" placeholder="Nhập số điện thoại">
+    <button onclick="submitPhone()">→</button>
+    </div>
+    <div class="footer-links">
+      <a href="#">Giới thiệu</a>
+      <a href="#">Đặt tour</a>
+      <a href="#">Khách sạn</a>
+      <a href="#">Điểm đến</a>
+    </div>
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fa fa-phone"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-links">
+      <a href="#">Đối tác</a>
+      <a href="#">Hỗ trợ</a>
+      <a href="#">Thanh toán</a>
+      <a href="#">Liên hệ</a>
+    </div>
+    <div class="footer-brand">TÂY BẮC TOUR</div>
+    <div class="footer-copy">© 2025. by TayBacTour</div>
+  </div>
+</footer>  
       <script>
         const menuToggle = document.getElementById("menu-toggle");
         const nav = document.querySelector("nav");
@@ -420,7 +386,7 @@
           nav.classList.toggle("active");
         });
       </script>
-              
+<script src="footermenu.js"></script>              
 </body>
 </html>
 
