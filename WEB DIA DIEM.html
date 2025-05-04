@@ -9,21 +9,26 @@
 <link rel="stylesheet" href="footermenu.css">
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
+     * {
+      box-sizing: border-box;
+      margin: 5;
+      padding: 5;
+    }
     body {
       margin: 0;
       font-family: Cascadia Mono;
-      color: #333;
-      scroll-behavior: smooth;
-      background-color: #f7f7f7;
+      background-color:#f4f4f4;
+      overflow-x: hidden;
     }
     header {
       background: url('https://scontent.iocvnpt.com/resources/portal//Images/LCI/kimphuong/2024/z5931059377817_dc7777b6d49ded169fb505338bea5285_954195816.jpg') no-repeat center center;
       background-size: cover;
-      color: white;
-      text-align:center;
-      padding: 40px 0px; 
-      height: 400px;  
-      filter: blur(0,5 px);
+      color: rgba(255, 255, 255, 0.9);
+      padding: 40px 20px; 
+      height: 500px;
+    }
+    header h1,header h2{
+      text-align: center;
     }
     header h1{
       font-size: 6em;
@@ -35,6 +40,85 @@
       font-size: 3em;
       color: white;
       margin-top: -5px; 
+    }
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.618);
+      padding: 10px 20px;
+      flex-wrap: nowrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    .logo h1 {
+      font-size: 22px;
+      color: #2c3e50;
+      margin: 0;
+    }
+    .search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: #f7f7f7;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .search-box input {
+      border: none;
+      background: transparent;
+      outline: none;
+    }
+    .flag {
+      width: 30px;
+      height:auto;  
+    }
+    .menu-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.2); 
+      backdrop-filter: blur(4px); 
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      font-weight: bold;
+    }
+    nav a i {
+      margin-right: 8px;
+    }
+    nav a:hover {
+      background-color: #1abc9c;
+    }
+    nav a.active {
+        background-color:#63bda2;
+        color: white;
+    }   
+    a {
+    text-decoration: none;
+    color: inherit;
     }
      .banner .overlay {
       background: rgba(0, 0, 0, 0.4);
@@ -78,42 +162,6 @@
 
     .location-card div {
       padding: 10px;
-    }
-
-    .suggestions {
-      padding: 20px;
-    }
-
-    .combo-list {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .combo-list img {
-      width: 150px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 8px;
-      transition: transform 0.3s ease;
-    }
-
-    .combo-list img:hover {
-      transform: scale(1.03);
-      cursor: pointer;
-    }
-
-    .cta-button {
-      margin-top: 15px;
-      padding: 10px 20px;
-      background-color: #D4AF37;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-weight: bold;
-      animation: pulse 2s infinite;
-      cursor: pointer;
     }
 
     @keyframes pulse {
@@ -232,6 +280,110 @@
       align-items: center;
       gap: 10px;
     }
+    @media (max-width: 768px) {
+  /* HEADER & TOP BAR */
+  header {
+        height: auto;
+        padding: 20px;
+        text-align: left;
+      }
+  header h1 {
+        font-size: 2.5em;
+      }
+
+  header h2 {
+        font-size: 1.5em;
+      }
+  header p {
+        font-size: 1em;
+      }
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+    .logo img {
+      height: 20px;
+    }
+    .logo h1 {
+      font-size: 20px;
+    }
+.search {
+    width: 50%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .search-box {
+    width: 50%;
+  }
+
+  /* HAMBURGER MENU */
+ nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 99;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    color: #000;
+    border-bottom: 1px solid #ddd;
+    padding: 12px 20px;
+  }
+  .carousel-container {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .carousel-btn {
+    padding: 16px;
+    font-size: 28px;
+  }
+  .menu-toggle {
+        display: block;
+        font-size: 28px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #333;}
+  .post-list {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    align-items: center;
+  }
+
+  .post-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .post-item img {
+    width: 100%;
+    height: auto;
+  }
+}
+@media (min-width: 769px) {
+      #menu-toggle {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -250,6 +402,7 @@
       </div>
       <div class="menu-wrapper">
       <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+      <button id="menu-toggle"><i class="fas fa-bars"></i></button>
       </div>
     </div>
   </div>
@@ -490,6 +643,13 @@
       }
     });
     const slider = document.getElementById("image-slider")
+
+    const menuToggle = document.getElementById("menu-toggle");
+    const nav = document.querySelector("nav");
+  
+    menuToggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
 
   </script>
 <script src="footermenu.js"></script>  
