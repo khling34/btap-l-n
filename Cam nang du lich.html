@@ -45,54 +45,19 @@
     color: #047857; /* green-700 */
     font-weight: 500;
     font-size: 35px; /* text-lg */
-    margin-bottom: 8px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 20 px ;
   }
   h2 {
     font-weight: bold;
     font-size: 30px; /* text-base */
     margin-bottom: 5px;
-     padding-left: 15px;
+    padding-left: 15px;
     padding-right: 15px;
   }
   .underline-single {
   border-bottom: 1px dashed #64748b;   padding-top: 4px;
   padding-bottom: 4px;
 }
-  p#main-text {
-    font-size: 14px; /* text-xs */
-    margin-bottom: 12px;
-    max-width: 100%;
-       padding-left: 15px;
-    padding-right: 15px;
-           
-  }
-  .arrow-btn {
-    color: black;
-    border: none;
-    background: none;
-    cursor: pointer;
-    user-select: none;
-    padding: 0;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-     padding-top: 4px;
-  padding-bottom: 4px;
- 
-  }
-  .arrow-btn svg {
-    stroke-width: 2.5;
-  }
-  .container-arrows {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1000%;
-    margin-bottom: 16px;
-  }
   .full-width-black-bg {
     background-color: #0f172a; /* slate-900 */
     width: 100vw;
@@ -169,32 +134,6 @@
     border-radius: 5px;
     box-sizing: border-box;
     max-width: 500px;
-  }
-  @media (max-width: 640px) {
-    .flex-row {
-      flex-direction: column;
-    }
-    .left-menu {
-      width: 100%;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      justify-content: flex-start;
-      gap: 8px;
-      padding: 0;
-    }
-    .left-menu button {
-      margin-bottom: 0;
-      flex: 1;
-      max-width: none;
-      min-width: 80px;
-      padding-left: 8px;
-      padding-right: 8px;
-    }
-    .right-content {
-      min-height: auto;
-      margin-top: 16px;
-      max-width: 100%;
-    }
   }
     
     details {
@@ -303,7 +242,85 @@ a {
       align-items: center;
       gap: 10px;
     }
-    
+.text-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.carousel-btn {
+  background: none;
+  border: none;
+  font-size: 40px;
+  cursor: pointer;
+  color: #333;
+  transition: transform 0.2s;
+}
+
+.carousel-btn:hover {
+  transform: scale(1.2);
+}
+
+.carousel-content {
+  flex: 1;                        /* chiếm toàn bộ khoảng trống còn lại */
+  max-width: none;               /* bỏ giới hạn chiều rộng */
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s ease;
+  text-align: center;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  transform: translateX(0);
+  position: relative;
+}
+
+.carousel-item h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.carousel-item p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.section-title {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 0;
+  padding: 10px 30px;
+}
+
+.text-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;  /* đẩy nút trái/phải ra xa */
+  gap: 30px;
+  padding: 20px;
+  max-width: 90%;                /* bỏ giới hạn 1000px */
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
  </style>
 <body>
 <div class="background"></div>
@@ -339,23 +356,31 @@ a {
     <h1>Lào Cai</h1>
     <h2>Vùng đất mây phủ</h2>
   </header>
-  <h1>Cẩm nang du lịch</h1>
-  <h2>Huyện Sa Pa</h2>
-  <p id="main-text">
-    Huyện Sa Pa thuộc tỉnh Lào Cai là điểm đến lý tưởng với cảnh quan thiên nhiên hùng vĩ và khí hậu mát mẻ. Du khách đến đây sẽ được chiêm ngưỡng đỉnh Phan Xi Păng – ngọn núi cao nhất Việt Nam nổi được mệnh danh là "nóc nhà Đông Dương". Những thửa ruộng bậc thang trải dài bát tận dưới ánh nắng vàng là hình ảnh biểu tượng của Sa Pa, tạo nên một bức tranh thiên nhiên đầy mê hoặc. Thung lũng Mường Hoa với các nét vẽ đá cổ xưa và các bản làng như Tả Van, Lao Chải mang
-  </p>
-  <div class="container-arrows">
-    <button aria-label="Previous" id="prevBtn" class="arrow-btn" title="Nội dung trước">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-      </svg>
-    </button>
-    <button aria-label="Next" id="nextBtn" class="arrow-btn" title="Nội dung tiếp">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" width="18" height="18">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
-    </button>
+  <h2 class="section-title">Cẩm nang du lịch</h2>
+  <div class="text-carousel">
+    <button class="carousel-btn left" onclick="prevSlide()">❮</button>
+    <div class="carousel-content">
+      <div class="carousel-item active">
+        <h2>Huyện Sa Pa</h2>
+        <p>
+          Huyện Sa Pa thuộc tỉnh Lào Cai là điểm đến lý tưởng với cảnh quan thiên nhiên hùng vĩ và khí hậu mát mẻ. Du khách đến đây sẽ được chiêm ngưỡng đỉnh Phan Xi Păng – ngọn núi cao nhất Việt Nam nổi được mệnh danh là "nóc nhà Đông Dương". Những thửa ruộng bậc thang trải dài bát tận dưới ánh nắng vàng là hình ảnh biểu tượng của Sa Pa, tạo nên một bức tranh thiên nhiên đầy mê hoặc. Thung lũng Mường Hoa với các nét vẽ đá cổ xưa và các bản làng như Tả Van, Lao Chải        </p>
+      </div>
+      <div class="carousel-item">
+        <h2>Thung lũng Mường Hoa</h2>
+        <p>
+          Sa Pa là một thị trấn vùng cao nổi tiếng với khí hậu mát mẻ quanh năm, thu hút nhiều khách du lịch trong và ngoài nước. Ngoài cảnh quan thiên nhiên tuyệt đẹp, Sa Pa còn nổi bật với văn hóa đa dạng của các dân tộc thiểu số như H'Mông, Dao, Tày, và Giáy. Du khách có thể trải nghiệm các hoạt động như trekking, thăm bản làng, thưởng thức ẩm thực đặc trưng và tham gia các lễ hội truyền thống.        </p>
+      </div>
+      <div class="carousel-item">
+        <h2>Bản Tả Van - Lao Chải</h2>
+        <p>
+          Phan Xi Păng, hay còn gọi là Fansipan, là ngọn núi cao nhất Việt Nam và được mệnh danh là "Nóc nhà Đông Dương". Việc chinh phục đỉnh Fansipan là một trải nghiệm khó quên đối với những người yêu thích leo núi và khám phá thiên nhiên. Ngoài ra, Sa Pa còn có nhiều điểm tham quan hấp dẫn khác như thác Bạc, thung lũng Mường Hoa, và chợ tình Sa Pa.
+        </p>
+      </div>
+    </div>
+  
+    <button class="carousel-btn right" onclick="nextSlide()">❯</button>
   </div>
+  
   <section class="full-width-black-bg" role="region" aria-label="Nội dung du lịch Sa Pa">
     <div class="content-inner">
       <div class="title-large">Mẹo du lịch khi tới Sa Pa</div>
@@ -381,79 +406,43 @@ a {
         </div>
       </div>
  
-<script>
-  const mainTexts = [
-    `Huyện Sa Pa thuộc tỉnh Lào Cai là điểm đến lý tưởng với cảnh quan thiên nhiên hùng vĩ và khí hậu mát mẻ. Du khách đến đây sẽ được chiêm ngưỡng đỉnh Phan Xi Păng – ngọn núi cao nhất Việt Nam nổi được mệnh danh là "nóc nhà Đông Dương". Những thửa ruộng bậc thang trải dài bát tận dưới ánh nắng vàng là hình ảnh biểu tượng của Sa Pa, tạo nên một bức tranh thiên nhiên đầy mê hoặc. Thung lũng Mường Hoa với các nét vẽ đá cổ xưa và các bản làng như Tả Van, Lao Chải mang`,
-    `Sa Pa là một thị trấn vùng cao nổi tiếng với khí hậu mát mẻ quanh năm, thu hút nhiều khách du lịch trong và ngoài nước. Ngoài cảnh quan thiên nhiên tuyệt đẹp, Sa Pa còn nổi bật với văn hóa đa dạng của các dân tộc thiểu số như H'Mông, Dao, Tày, và Giáy. Du khách có thể trải nghiệm các hoạt động như trekking, thăm bản làng, thưởng thức ẩm thực đặc trưng và tham gia các lễ hội truyền thống.`,
-    `Phan Xi Păng, hay còn gọi là Fansipan, là ngọn núi cao nhất Việt Nam và được mệnh danh là "Nóc nhà Đông Dương". Việc chinh phục đỉnh Fansipan là một trải nghiệm khó quên đối với những người yêu thích leo núi và khám phá thiên nhiên. Ngoài ra, Sa Pa còn có nhiều điểm tham quan hấp dẫn khác như thác Bạc, thung lũng Mường Hoa, và chợ tình Sa Pa.`,
-  ];
-
-  const contentTexts = [
-    ` Thuê xe máy là một trong những cách phổ biến và linh hoạt nhất để khám phá Sa Pa. 
-                  Giá thuê dao động từ 150.000đ đến 200.000đ/ngày tùy loại xe. 
-                  Bạn có thể thuê xe tại các khách sạn, homestay hoặc các cửa hàng cho thuê xe trong thị trấn.
-                   Lưu ý mang theo giấy tờ tùy thân và bằng lái xe để đặt cọc. Xe máy giúp bạn dễ dàng di chuyển đến các điểm du lịch như Cổng Trời, thác Bạc, bản Cát Cát một cách chủ động.`,
-    ` Dịch vụ xe ôm có mặt khắp thị trấn Sa Pa, đặc biệt tập trung nhiều ở khu vực chợ và nhà thờ đá. 
-                 Giá cả thường được thỏa thuận trước khi đi, dao động từ 50.000đ đến 100.000đ cho quãng đường ngắn trong thị trấn, và có thể lên đến 200.000 - 300.000 VND cho các điểm xa hơn.
-                  Các tài xế xe ôm thường rất am hiểu địa phương và có thể đóng vai trò như hướng dẫn viên địa phương.`,
-    `Dịch vụ thuê xe ô tô tại Sa Pa ngày càng phát triển với nhiều lựa chọn từ xe 4 chỗ đến 7 chỗ. 
-                   Giá thuê xe tự lái dao động từ 700.000đ đến 1.500.000đ/ngày tùy loại xe. Nếu thuê xe có tài xế, giá sẽ từ 1.000.000đ đến 2.000.000 VND/ngày. 
-                   Các công ty cho thuê xe thường yêu cầu đặt cọc bằng tiền mặt hoặc giấy tờ có giá trị và giấy phép lái xe hợp lệ.`,
-    `Sa Pa có hệ thống xe bus nội thị kết nối các điểm du lịch chính trong khu vực. 
-                  Giá vé rẻ, khoảng 10.000đ-15.000đ/lượt, phù hợp với khách du lịch muốn tiết kiệm chi phí. 
-                  Tuy nhiên, tần suất xe chạy không cao và thời gian chờ đợi có thể khá lâu.`,
-    `Dịch vụ xe điện trong thị trấn Sa Pa khá phát triển,trong khu vực trung tâm. 
-                  Giá vé khoảng 15.000 - 20.000 VND/lượt/người cho các tuyến ngắn trong thị trấn. 
-                  Xe điện thường chạy theo tuyến cố định và dừng ở các điểm tham quan chính, thuận tiện cho việc tham quan thị trấn`,
-    ` Các hãng taxi uy tín như Mai Linh, Sao Đỏ hoạt động thường xuyên tại Sa Pa. 
-                  Giá cước theo đồng hồ, với giá mở cửa khoảng 12.000 - 15.000 VND cho 1-2km đầu tiên. 
-                  Taxi là phương tiện an toàn và tiện lợi, đặc biệt trong những ngày mưa hoặc di chuyển vào buổi tối.`,
-    `Mặc dù không phải phương tiện di chuyển, nhưng đi bộ là cách tuyệt vời để khám phá trung tâm thị trấn Sa Pa và các bản làng gần đó. 
-                  Nhiều điểm tham quan trong thị trấn nằm trong khoảng cách đi bộ thuận tiện, giúp bạn tận hưởng không khí trong lành và ngắm cảnh đẹp của vùng núi.`,
-  ];
-
-  const mainTextEl = document.getElementById('main-text');
-  const contentTextEl = document.getElementById('content-text');
-  const prevBtn = document.getElementById('prevBtn');
-  const nextBtn = document.getElementById('nextBtn');
-  const transportButtons = document.querySelectorAll('.left-menu button');
-
-  let mainIndex = 0;
-  let contentIndex = 0;
-
-  function updateMainText() {
-    mainTextEl.textContent = mainTexts[mainIndex];
-  }
-
-  function updateContentText() {
-    contentTextEl.textContent = contentTexts[contentIndex];
-    transportButtons.forEach((btn, i) => {
-      const active = i === contentIndex;
-      btn.classList.toggle('active', active);
-      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-    });
-  }
-
-  prevBtn.addEventListener('click', () => {
-    mainIndex = (mainIndex - 1 + mainTexts.length) % mainTexts.length;
-    updateMainText();
-  });
-
-  nextBtn.addEventListener('click', () => {
-    mainIndex = (mainIndex + 1) % mainTexts.length;
-    updateMainText();
-  });
-
-  transportButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      contentIndex = Number(btn.dataset.index);
-      updateContentText();
-    });
-  });
-
-  updateMainText();
-  updateContentText();
-</script>
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          // Mảng nội dung tương ứng với 7 nút
+          const contentTexts = [
+            `Thuê xe máy là một trong những cách phổ biến và linh hoạt nhất để khám phá Sa Pa. Giá thuê dao động từ 150.000đ đến 200.000đ/ngày tùy loại xe. Bạn có thể thuê xe tại các khách sạn, homestay hoặc các cửa hàng cho thuê xe trong thị trấn. Lưu ý mang theo giấy tờ tùy thân và bằng lái xe để đặt cọc. Xe máy giúp bạn dễ dàng di chuyển đến các điểm du lịch như Cổng Trời, thác Bạc, bản Cát Cát một cách chủ động.`,
+            `Dịch vụ xe ôm có mặt khắp thị trấn Sa Pa, đặc biệt tập trung nhiều ở khu vực chợ và nhà thờ đá. Giá cả thường được thỏa thuận trước khi đi, dao động từ 50.000đ đến 100.000đ cho quãng đường ngắn trong thị trấn, và có thể lên đến 200.000 - 300.000 VND cho các điểm xa hơn. Các tài xế xe ôm thường rất am hiểu địa phương và có thể đóng vai trò như hướng dẫn viên địa phương.`,
+            `Dịch vụ thuê xe ô tô tại Sa Pa ngày càng phát triển với nhiều lựa chọn từ xe 4 chỗ đến 7 chỗ. Giá thuê xe tự lái dao động từ 700.000đ đến 1.500.000đ/ngày tùy loại xe. Nếu thuê xe có tài xế, giá sẽ từ 1.000.000đ đến 2.000.000 VND/ngày. Các công ty cho thuê xe thường yêu cầu đặt cọc bằng tiền mặt hoặc giấy tờ có giá trị và giấy phép lái xe hợp lệ.`,
+            `Sa Pa có hệ thống xe bus nội thị kết nối các điểm du lịch chính trong khu vực. Giá vé rẻ, khoảng 10.000đ-15.000đ/lượt, phù hợp với khách du lịch muốn tiết kiệm chi phí. Tuy nhiên, tần suất xe chạy không cao và thời gian chờ đợi có thể khá lâu.`,
+            `Dịch vụ xe điện trong thị trấn Sa Pa khá phát triển, trong khu vực trung tâm. Giá vé khoảng 15.000 - 20.000 VND/lượt/người cho các tuyến ngắn trong thị trấn. Xe điện thường chạy theo tuyến cố định và dừng ở các điểm tham quan chính, thuận tiện cho việc tham quan thị trấn.`,
+            `Các hãng taxi uy tín như Mai Linh, Sao Đỏ hoạt động thường xuyên tại Sa Pa. Giá cước theo đồng hồ, với giá mở cửa khoảng 12.000 - 15.000 VND cho 1-2km đầu tiên. Taxi là phương tiện an toàn và tiện lợi, đặc biệt trong những ngày mưa hoặc di chuyển vào buổi tối.`,
+            `Mặc dù không phải phương tiện di chuyển, nhưng đi bộ là cách tuyệt vời để khám phá trung tâm thị trấn Sa Pa và các bản làng gần đó. Nhiều điểm tham quan trong thị trấn nằm trong khoảng cách đi bộ thuận tiện, giúp bạn tận hưởng không khí trong lành và ngắm cảnh đẹp của vùng núi.`
+          ];
+        
+          // Lấy danh sách nút và thẻ nội dung
+          const buttons = document.querySelectorAll('.left-menu button');
+          const contentEl = document.getElementById('content-text');
+        
+          buttons.forEach((btn, idx) => {
+            btn.addEventListener('click', () => {
+              // Bỏ class active của tất cả nút, thêm vào nút được click
+              buttons.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+              btn.setAttribute('aria-pressed', 'true');
+        
+              // Cập nhật text vào khung phải
+              contentEl.textContent = contentTexts[idx];
+            });
+          });
+        
+          // Khởi tạo: mô phỏng click nút đầu tiên để load nội dung ban đầu
+          if (buttons.length > 0) {
+            buttons[0].click();
+          }
+        });
+        </script>
+        
+      
 <div class="title-large">Mẹo thiết thực khi đến Huyện Sa Pa</div>
    <div class="underline-single">Những thứ cần chuẩn bị và cách tốt nhất để tham quan</div>
 <br>
@@ -571,7 +560,31 @@ a {
       nav.classList.toggle("active");
     });
   </script>
+  <script>
+    let currentSlide = 0;
+    const items = document.querySelectorAll('.carousel-item');
+  
+    function showSlide(index) {
+      items.forEach((item, i) => {
+        item.classList.remove('active');
+      });
+      items[index].classList.add('active');
+    }
+  
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % items.length;
+      showSlide(currentSlide);
+    }
+  
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + items.length) % items.length;
+      showSlide(currentSlide);
+    }
+  
+    // Hiển thị slide đầu tiên khi load
+    showSlide(currentSlide);
+  </script>
+  
 </body>
 </html>
   
-
