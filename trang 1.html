@@ -66,14 +66,9 @@
     ul li {
       margin-bottom: 0.5rem;
     }
-
-    a {
-      color: #2980b9;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
+  a {
+    text-decoration: none;
+    color: inherit;
     }
      .menu-toggle {
       display: none;
@@ -265,6 +260,14 @@ Sau khi đến Hà Nội, bạn có thể di chuyển đến Sapa, Lào Cai bằ
   </div>
 </footer>
 <script src="footermenu.js"></script>
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const nav = document.querySelector("nav");
+
+  menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
 </body>
 </html>
 
