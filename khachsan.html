@@ -415,7 +415,16 @@
       background: #eee;
       cursor: pointer;
     }
-/* HEADER & TOP BAR */
+a {
+    text-decoration: none;
+    color: inherit;
+    }
+ nav a.active {
+        background-color:#63bda2;
+        color: white;
+    }  
+   @media (max-width: 768px) {
+  /* HEADER & TOP BAR */
   header {
         height: auto;
         padding: 20px;
@@ -431,14 +440,59 @@
   header p {
         font-size: 1em;
       }
-a {
-    text-decoration: none;
-    color: inherit;
+  .top-bar {
+    flex-direction: ;
+    align-items: flex-start;
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+    .logo img {
+      height: 20px;
     }
- nav a.active {
-        background-color:#63bda2;
-        color: white;
-    }  
+    .logo h1 {
+      font-size: 20px;
+    }
+.search {
+    width: 50%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .search-box {
+    width: 50%;
+  }
+
+  /* HAMBURGER MENU */
+ nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 99;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    color: #000;
+    border-bottom: 1px solid #ddd;
+    padding: 12px 20px;
+  }
+}
+ .menu-toggle {
+      display: none;
+    }
+  @media (min-width: 769px) {
+      #menu-toggle {
+        display: none !important;
+      }
+    }
 </style>
 </head>
 <body>
@@ -456,6 +510,7 @@ a {
       </div>
       <div class="menu-wrapper">
       <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+      <button id="menu-toggle"><i class="fas fa-bars"></i></button>
       </div>
     </div>
   </div>
@@ -847,6 +902,7 @@ a {
     <button onclick="bookHotel('Eco Palms House', 1700000)">ĐẶT PHÒNG</button>
   </div>
 </div>
+</div>
 
 <footer class="footer">
   <div class="footer-top">
@@ -1003,5 +1059,13 @@ a {
       window.location.href = 'thanhtoan-ks.html';
     }
   </script>
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const nav = document.querySelector("nav");
+
+  menuToggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+</script>
 </body>
 </html>
