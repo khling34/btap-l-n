@@ -494,18 +494,12 @@ a {
 }
     }
   @media (min-width: 769px) {
-      #menutogglle {
+      #menu-toggle {
         display: none !important;
       }
     }
-  .menutogglle {
+  .menu-toggle {
             display: none;
-            background: #444;
-            border: none;
-            color: white;
-            padding: 10px;
-            font-size: 18px;
-            border-radius: 5px;
         }
 </style>
 </head>
@@ -524,7 +518,7 @@ a {
       </div>
       <div class="menu-wrapper">
       <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
-      <button id="menutogglle"><i class="fas fa-bars"></i></button>
+      <button id="menu-toggle"><i class="fas fa-bars"></i></button>
       </div>
     </div>
   </div>
@@ -1074,7 +1068,7 @@ a {
     }
   </script>
 <script>
-  const menuToggle = document.getElementById("menutogglle");
+  const menuToggle = document.getElementById("menu-toggle");
   const nav = document.querySelector("nav");
 
   menuToggle.addEventListener("click", () => {
