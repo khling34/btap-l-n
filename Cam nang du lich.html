@@ -320,7 +320,82 @@ a {
   margin: 0 auto;
   position: relative;
 }
+ @media (max-width: 768px) {
+  /* HEADER & TOP BAR */
+  header {
+        height: auto;
+        padding: 20px;
+        text-align: left;
+      }
+  header h1 {
+        font-size: 2.5em;
+      }
 
+  header h2 {
+        font-size: 1.5em;
+      }
+  header p {
+        font-size: 1em;
+      }
+  .top-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+    .logo img {
+      height: 20px;
+    }
+    .logo h1 {
+      font-size: 20px;
+    }
+.search {
+    width: 50%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .search-box {
+    width: 50%;
+  }
+
+  /* HAMBURGER MENU */
+ nav {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 99;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    color: #000;
+    border-bottom: 1px solid #ddd;
+    padding: 12px 20px;
+  }
+ }
+@media (min-width: 769px) {
+      #menu-toggle {
+        display: none !important;
+      }
+    }
+ a {
+    text-decoration: none;
+    color: inherit;
+    }
+  .menu-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
  </style>
 <body>
 <div class="background"></div>
@@ -338,6 +413,7 @@ a {
       </div>
       <div class="menu-wrapper">
       <img src="https://flagcdn.com/gb.svg" alt="flag" class="flag">
+      <button id="menu-toggle"><i class="fas fa-bars"></i></button>
       </div>
     </div>
   </div>
@@ -552,6 +628,7 @@ a {
   </div>
 </footer>
   <script src="footermenu.js"></script>
+  
    <script>
     const menuToggle = document.getElementById("menu-toggle");
     const nav = document.querySelector("nav");
@@ -560,6 +637,7 @@ a {
       nav.classList.toggle("active");
     });
   </script>
+  
   <script>
     let currentSlide = 0;
     const items = document.querySelectorAll('.carousel-item');
