@@ -186,22 +186,20 @@ function nextStep(step) {
     return;
   }
 
-  // Tạo mã đặt chỗ và lưu vào lịch sử
   const lichSu = JSON.parse(localStorage.getItem('lichSuDatCho')) || [];
   const maDatCho = 'XE' + Math.floor(100000 + Math.random() * 900000);
 
   lichSu.push({
     maDatCho,
     loai: 'car',
-    name: car.name,
-    date: car.date,
-    days: car.days,
-    guest: car.guest
+    name: ticket.route,
+    date: ticket.date,
+    time: ticket.time,
+    guest: ticket.quantity
   });
 
   localStorage.setItem('lichSuDatCho', JSON.stringify(lichSu));
   alert("✅ Thanh toán thành công! Mã đặt chỗ của bạn là: " + maDatCho);
-
   window.location.href = "index.html";
 }
   </script>
